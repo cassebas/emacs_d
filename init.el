@@ -32,5 +32,6 @@
 
 (require 'init-evil)
 (require 'init-helm)
+(require 'init-helm-gtags)
 (require 'init-magit)
 (require 'init-misc)
