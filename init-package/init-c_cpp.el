@@ -1,3 +1,9 @@
+(install-package 'company)
+(install-package 'company-c-headers)
+(require 'company)
+(require 'company-c-headers)
+(require 'cc-mode)
+
 ;; Available C style:
 ;; “gnu”: The default style for GNU projects
 ;; “k&r”: What Kernighan and Ritchie, the authors of C used in their book
@@ -12,25 +18,17 @@
 ;;;;;;;;;; set style to "linux";;;;;;;;;;;;;
 (setq c-default-style "bsd")
 
-(install-package 'company)
-(require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
-;(company-mode t)
 
-(install-package 'company-c-headers)
-(require 'company-c-headers)
+(define-key c-mode-map [(tab)] 'company-complete)
+(define-key c++-mode-map [(tab)] 'company-complete)
 
-(eval-after-load "c-mode"
-		 '(define-key c-mode-map [(tab)] 'company-complete))
-(eval-after-load "c++-mode"
-		 '(define-key c++-mode-map [(tab)] 'company-complete))
+(setq company-backends (delete 'company-semantic company-backends))
 (add-to-list 'company-backends 'company-c-headers)
 
-(add-to-list 'company-c-headers-path-system
-             (quote
-              ("/usr/include"
-               "/usr/local/include"
-               "/usr/include/c++/4.9"
-               "/usr/include/x86_64-linux-gnu/c++/4.9")))
+(add-to-list 'company-c-headers-path-system "/usr/include")
+(add-to-list 'company-c-headers-path-system "/usr/local/include")
+(add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9")
+(add-to-list 'company-c-headers-path-system "/usr/include/x86_64_linux-gnu/c++/4.9")
 
 (provide 'init-c_cpp)
