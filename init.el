@@ -13,8 +13,6 @@
                            company
                            company-c-headers
                            flycheck 
-                           helm
-                           helm-gtags
                            undo-tree))
 
 (defun install-default-packages()
@@ -33,5 +31,6 @@
     (package-install package)))
 
 (require 'init-evil)
+(require 'init-helm)
 (require 'init-magit)
 (require 'init-misc)
