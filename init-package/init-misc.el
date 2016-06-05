@@ -3,6 +3,9 @@
 ;;; syntax highlighting
 ;(require 'mcrl2-syntax)
 
+;;; Prevent startup screen
+(setq inhibit-splash-screen t)
+
 ;;; Configure whitespaces
 (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark)))
 (setq whitespace-display-mappings
