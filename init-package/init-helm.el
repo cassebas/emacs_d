@@ -19,6 +19,9 @@
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make tab works in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
 (when (executable-find "curl")
   (setq helm-google-suggest-use-curl-p t))
 
@@ -29,5 +32,22 @@
       helm-ff-file-name-history-use-recentf t)
 
 (helm-mode t)
+
+;;; Enable helm-gtags-mode
+(require 'helm-gtags)
+(setq
+ helm-gtags-ignore-case t
+ helm-gtags-auto-update t
+ helm-gtags-use-input-at-cursor t
+ helm-gtags-pulse-at-cursor t
+ helm-gtags-prefix-key "\C-cg"
+ helm-gtags-suggested-key-mapping t
+ )
+
+(add-hook 'dired-mode-hook 'helm-gtags-mode)
+(add-hook 'eshell-mode-hook 'helm-gtags-mode)
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode-hook 'helm-gtags-mode)
 
 (provide 'init-helm)
