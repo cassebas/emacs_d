@@ -6,6 +6,15 @@
 ;;; Prevent startup screen
 (setq inhibit-splash-screen t)
 
+;;; Always highlight parentheses
+(show-paren-mode t)
+
+;; use space to indent by default
+(setq-default indent-tabs-mode nil)
+
+;; set appearance of a tab that is represented by 4 spaces
+(setq-default tab-width 4)
+
 ;;; Configure whitespaces
 (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark)))
 (setq whitespace-display-mappings
