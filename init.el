@@ -30,6 +30,7 @@
   (unless(package-installed-p package)
     (package-install package)))
 
+(require 'init-c_cpp)
 (require 'init-evil)
 (require 'init-helm)
 (require 'init-helm-gtags)
