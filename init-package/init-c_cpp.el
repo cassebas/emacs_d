@@ -16,7 +16,7 @@
 ;; “java”: The default style for java-mode (see below)
 ;; “user”: When you want to define your own style
 ;;;;;;;;;; set style to "linux";;;;;;;;;;;;;
-(setq c-default-style "ellemtel")
+(setq c-default-style "k&r")
 
 (add-hook 'after-init-hook 'global-company-mode)
 
