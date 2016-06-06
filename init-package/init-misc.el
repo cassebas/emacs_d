@@ -2,6 +2,9 @@
 
 ;;; syntax highlighting
 ;(require 'mcrl2-syntax)
+(install-package 'spacemacs-theme)
+;(require 'spacemacs-dark-theme)
+(require 'spacemacs-light-theme)
 
 ;;; Prevent startup screen
 (setq inhibit-splash-screen t)
@@ -25,6 +28,11 @@
     (tab-mark 9 [9655 9] [92 9]) ; 9 TAB, 9655 WHITE RIGHT-POINTING TRIANGLE 「▷」
     ))
 (global-whitespace-mode 1)
+
+;; correct some minor details for improvement of font-lock
+(set-face-attribute 'font-lock-comment-face nil :background "inherit")
+(set-face-attribute 'whitespace-newline nil :foreground "gainsboro")
+(set-face-attribute 'whitespace-tab nil :foreground "gray")
 
 ;;; Turn on visual lines with word wrap, rebinding C-a and C-e
 (global-visual-line-mode 1)
