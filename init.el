@@ -35,5 +35,6 @@
 (require 'init-helm)
 (require 'init-helm-gtags)
 (require 'init-magit)
+(require 'init-projectile)
 (require 'init-python)
 (require 'init-misc)
