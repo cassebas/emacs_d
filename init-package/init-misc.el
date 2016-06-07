@@ -40,5 +40,17 @@
 ;;; Turn on line numbers
 (global-linum-mode 1)
 
-(provide 'init-misc)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;; fill column indicator      ;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(install-package 'fill-column-indicator)
+(require 'fill-column-indicator)
+(define-globalized-minor-mode
+  global-fci-mode fci-mode (lambda() (fci-mode t)))
+(global-fci-mode t)
+
+;;; also show column number in the status bar
+(setq column-number-mode t)
+
+(provide 'init-misc)
