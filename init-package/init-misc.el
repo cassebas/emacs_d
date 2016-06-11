@@ -1,22 +1,10 @@
 ;;; Customizations of various packages
 
+;;; install color theme
+(install-package 'spacemacs-theme)
+
 ;;; syntax highlighting
 ;(require 'mcrl2-syntax)
-(install-package 'spacemacs-theme)
-;(require 'spacemacs-dark-theme)
-(require 'spacemacs-light-theme)
-
-;;; Prevent startup screen
-(setq inhibit-splash-screen t)
-
-;;; Always highlight parentheses
-(show-paren-mode t)
-
-;; use space to indent by default
-(setq-default indent-tabs-mode nil)
-
-;; set appearance of a tab that is represented by 4 spaces
-(setq-default tab-width 4)
 
 ;;; Configure whitespaces
 (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark)))
@@ -29,10 +17,36 @@
     ))
 (global-whitespace-mode 1)
 
-;; correct some minor details for improvement of font-lock
-(set-face-attribute 'font-lock-comment-face nil :background "inherit")
-(set-face-attribute 'whitespace-newline nil :foreground "gainsboro")
-(set-face-attribute 'whitespace-tab nil :foreground "gray")
+(defun my-whitespace-settings (whitespace-color)
+  " Correct some minor details for improvement of font-lock"
+  (set-face-attribute 'font-lock-comment-face nil :background "inherit")
+  (set-face-attribute 'whitespace-space nil :foreground whitespace-color)
+  (set-face-attribute 'whitespace-newline nil :foreground whitespace-color)
+  (set-face-attribute 'whitespace-tab nil :foreground whitespace-color))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;; make sure emacsclient in daemon mode correctly uses color theme      ;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (require 'spacemacs-dark-theme)
+                  (my-whitespace-settings "gray26"))))
+  (require 'spacemacs-light-theme)
+  (my-whitespace-settings "gainsboro"))
+
+;;; Prevent startup screen
+(setq inhibit-splash-screen t)
+
+;;; Always highlight parentheses
+(show-paren-mode t)
+
+;; use space to indent by default
+(setq-default indent-tabs-mode nil)
+
+;; set appearance of a tab that is represented by 4 spaces
+(setq-default tab-width 4)
 
 ;;; Turn on visual lines with word wrap, rebinding C-a and C-e
 (global-visual-line-mode 1)
