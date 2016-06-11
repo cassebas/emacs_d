@@ -78,4 +78,8 @@
 ;;; also show column number in the status bar
 (setq column-number-mode t)
 
+;; font
+;(set-default-font "SourceCodePro-10")
+(set-default-font "DejaVuSansMono-9")
+
 (provide 'init-misc)
