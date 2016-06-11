@@ -49,9 +49,15 @@
 
 (install-package 'fill-column-indicator)
 (require 'fill-column-indicator)
-(define-globalized-minor-mode
-  global-fci-mode fci-mode (lambda() (fci-mode t)))
+(define-globalized-minor-mode global-fci-mode fci-mode
+  (lambda()
+    (if (and
+         (not (string-match "^\*.*\*$" (buffer-name)))
+         (not (eq major-mode 'dired-mode)))
+        (fci-mode t))))
 (global-fci-mode t)
+(setq fci-rule-column 80)
+(setq fci-rule-color "gainsboro")
 
 ;;; also show column number in the status bar
 (setq column-number-mode t)
