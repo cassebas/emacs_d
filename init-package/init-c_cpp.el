@@ -15,7 +15,7 @@
 ;; “python”: What Python developers use for extension modules
 ;; “java”: The default style for java-mode (see below)
 ;; “user”: When you want to define your own style
-;;;;;;;;;; set style to "linux";;;;;;;;;;;;;
+;;;;;;;;;; set style to "k&r";;;;;;;;;;;;;
 (setq c-default-style "k&r")
 
 (add-hook 'after-init-hook 'global-company-mode)
