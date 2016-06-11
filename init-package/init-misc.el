@@ -40,6 +40,9 @@
 ;;; Turn on line numbers
 (global-linum-mode 1)
 
+;;; for writing latex
+(install-package 'auctex)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;; fill column indicator      ;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
