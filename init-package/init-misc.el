@@ -80,6 +80,6 @@
 
 ;; font
 ;(set-default-font "SourceCodePro-10")
-(set-default-font "DejaVuSansMono-9")
+(set-default-font "DejaVuSansMono-10")
 
 (provide 'init-misc)
