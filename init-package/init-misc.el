@@ -71,7 +71,9 @@
         (fci-mode t))))
 (global-fci-mode t)
 (setq fci-rule-column 80)
-(setq fci-rule-color "gainsboro")
+(if (daemonp)
+    (setq fci-rule-color "gray26")
+  (setq fci-rule-color "gainsboro"))
 
 ;;; also show column number in the status bar
 (setq column-number-mode t)
