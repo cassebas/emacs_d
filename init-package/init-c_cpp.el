@@ -43,4 +43,24 @@
 ;; (require 'yasnippet)
 ;; (yas-global-mode t)
 
+
+;;;;;
+;;;;; other method for header completion (for reference or future activation)
+;;;;;
+;;(require-package 'auto-complete-c-headers)
+;; (defun my:ac-c-header-init ()
+;;   (add-to-list 'ac-sources 'ac-source-c-headers)
+;;   (add-to-list 'achead:include-directories '"/usr/local/include /usr/include/x86_64-linux-gnu/c++/4.9 /usr/include/c++/4.9")
+;;   ;(add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu/c++/4.9")
+;;   ;(add-to-list 'achead:include-directories '"/usr/include/c++/4.9/backward")
+;;   ;(add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.9/include")
+;;   ;(add-to-list 'achead:include-directories '"/usr/local/include")
+;;   ;(add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed")
+;;   ;(add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu")
+;;   ;(add-to-list 'achead:include-directories '"/usr/include")
+;; )
+;; (add-hook 'c++-mode-hook 'my:ac-c-header-init)
+;; (add-hook 'c-mode-hook 'my:ac-c-header-init)
+
+
 (provide 'init-c_cpp)
