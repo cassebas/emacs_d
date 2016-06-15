@@ -38,3 +38,4 @@
 (require 'init-projectile)
 (require 'init-python)
 (require 'init-misc)
+(require 'init-org)
