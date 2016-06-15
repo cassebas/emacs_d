@@ -33,4 +33,14 @@
 (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9")
 (add-to-list 'company-c-headers-path-system "/usr/include/x86_64_linux-gnu/c++/4.9")
 
+
+;;;;; flycheck
+(install-package 'flycheck)
+(global-flycheck-mode)
+
+;;;;; yasnippet
+;; (install-package 'yasnippet)
+;; (require 'yasnippet)
+;; (yas-global-mode t)
+
 (provide 'init-c_cpp)
