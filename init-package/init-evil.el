@@ -3,6 +3,20 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (install-package 'evil)
+(install-package 'evil-leader)
+
+;;;; evil-leader will provide me with a shortcut-keybinding for commands
+;;;; enable before enabling evil
+(global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
+(evil-leader/set-key
+ "f" 'helm-find-files
+ "b" 'switch-to-buffer
+ "g" 'magit-status
+ "k" 'kill-buffer
+ "p" 'projectile-find-file)
+
+
 (require 'evil)
 (evil-mode t)
 ;;; i like evil but I do want my C-e back!
