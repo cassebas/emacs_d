@@ -43,6 +43,8 @@
 ;; (require 'yasnippet)
 ;; (yas-global-mode t)
 
+(install-package 'auto-complete)
+(install-package 'rtags)
 
 ;;;;;
 ;;;;; other method for header completion (for reference or future activation)
@@ -62,5 +64,39 @@
 ;; (add-hook 'c++-mode-hook 'my:ac-c-header-init)
 ;; (add-hook 'c-mode-hook 'my:ac-c-header-init)
 
+
+;; ensure that we use only rtags checking
+;; https://github.com/Andersbakken/rtags#optional-1
+(defun setup-flycheck-rtags ()
+  (interactive)
+  (flycheck-select-checker 'rtags)
+  ;; RTags creates more accurate overlays.
+  (setq-local flycheck-highlighting-mode nil)
+  (setq-local flycheck-check-syntax-automatically nil))
+
+;; only run this if rtags is installed
+(when (require 'rtags nil :noerror)
+  ;; make sure you have company-mode installed
+  (require 'company)
+  (define-key c-mode-base-map (kbd "M-p")
+    (function rtags-find-symbol-at-point))
+  (define-key c-mode-base-map (kbd "M-o")
+    (function rtags-find-references-at-point))
+  ;; install standard rtags keybindings. Do M-. on the symbol below to
+  ;; jump to definition and see the keybindings.
+  (rtags-enable-standard-keybindings)
+  ;; comment this out if you don't have or don't use helm
+  (setq rtags-use-helm t)
+  ;; company completion setup
+  (setq rtags-autostart-diagnostics t)
+  (rtags-diagnostics)
+  (setq rtags-completions-enabled t)
+  (push 'company-rtags company-backends)
+  (global-company-mode)
+  (define-key c-mode-base-map (kbd "<C-tab>") (function company-complete))
+  ;; use rtags flycheck mode -- clang warnings shown inline
+  (require 'flycheck-rtags)
+  ;; c-mode-common-hook is also called by c++-mode
+  (add-hook 'c-mode-common-hook #'setup-flycheck-rtags))
 
 (provide 'init-c_cpp)
