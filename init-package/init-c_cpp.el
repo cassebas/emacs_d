@@ -1,7 +1,3 @@
-(install-package 'company)
-(install-package 'company-c-headers)
-(require 'company)
-(require 'company-c-headers)
 (require 'cc-mode)
 
 ;; Available C style:
@@ -25,13 +21,6 @@
 (define-key c-mode-map [(tab)] 'company-complete)
 (define-key c++-mode-map [(tab)] 'company-complete)
 
-(setq company-backends (delete 'company-semantic company-backends))
-(add-to-list 'company-backends 'company-c-headers)
-
-(add-to-list 'company-c-headers-path-system "/usr/include")
-(add-to-list 'company-c-headers-path-system "/usr/local/include")
-(add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9")
-(add-to-list 'company-c-headers-path-system "/usr/include/x86_64_linux-gnu/c++/4.9")
 
 
 ;;;;; flycheck
@@ -43,9 +32,47 @@
 ;; (require 'yasnippet)
 ;; (yas-global-mode t)
 
+;;;;;;;;;;;;;;;;;;;;;;;
+;;; Configure rtags ;;;
+;;;;;;;;;;;;;;;;;;;;;;;
+
 (install-package 'auto-complete)
+(install-package 'company)
+(install-package 'company-c-headers)
 (install-package 'rtags)
 
+(require 'company)
+(require 'company-c-headers)
 
+;;; maybe start the rdm service
+(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
+(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+
+(setq rtags-autostart-diagnostics t)
+(rtags-diagnostics)
+
+;;; have standard keybindings (prefix for commands is C-c r)
+(rtags-enable-standard-keybindings)
+
+;;; some easy keybindings:
+(define-key c-mode-base-map (kbd "M-.") (function tags-find-symbol-at-point))
+(define-key c-mode-base-map (kbd "M-,") (function tags-find-references-at-point))
+(define-key c-mode-base-map (kbd "M-;") (function tags-find-file))
+(define-key c-mode-base-map (kbd "C-.") (function tags-find-symbol))
+(define-key c-mode-base-map (kbd "C-,") (function tags-find-references))
+(define-key c-mode-base-map (kbd "C-<") (function rtags-find-virtuals-at-point))
+(define-key c-mode-base-map (kbd "M-i") (function tags-imenu))
+
+;;; work together with company
+(add-to-list 'company-c-headers-path-system "/usr/include")
+(add-to-list 'company-c-headers-path-system "/usr/local/include")
+(add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9")
+(add-to-list 'company-c-headers-path-system "/usr/include/x86_64_linux-gnu/c++/4.9")
+;; configure backends for company
+(setq rtags-completions-enabled t)
+(setq company-backends (delete 'company-semantic company-backends))
+(push 'company-rtags company-backends)
+(push 'company-c-headers company-backends)
+(global-company-mode)
 
 (provide 'init-c_cpp)
