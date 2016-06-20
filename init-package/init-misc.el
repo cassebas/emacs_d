@@ -55,6 +55,10 @@
 ;;; Turn on line numbers
 (global-linum-mode 1)
 
+;;; no menu-bar nor tool-bar
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+
 ;;; for writing latex
 (install-package 'auctex)
 
