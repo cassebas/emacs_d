@@ -62,6 +62,8 @@
 (define-key c-mode-base-map (kbd "C-,") (function rtags-find-references))
 (define-key c-mode-base-map (kbd "C-<") (function rtags-find-virtuals-at-point))
 (define-key c-mode-base-map (kbd "M-i") (function rtags-imenu))
+(define-key c-mode-base-map (kbd "M-n") (function rtags-next-match))
+(define-key c-mode-base-map (kbd "M-p") (function rtags-previous-match))
 
 ;;; work together with company
 (add-to-list 'company-c-headers-path-system "/usr/include")
