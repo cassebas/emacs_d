@@ -77,4 +77,7 @@
 (push 'company-c-headers company-backends)
 (global-company-mode)
 
+;;; turn on rtags flycheck support
+(require 'flycheck-rtags)
+
 (provide 'init-c_cpp)
