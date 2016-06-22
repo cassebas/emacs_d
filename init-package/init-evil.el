@@ -32,4 +32,7 @@
 ;;; make horizontal movement cross lines
 (setq-default evil-cross-lines t)
 
+;;; unset the M-. keybinding as I want it for rtags completion
+(define-key evil-normal-state-map (kbd "M-.") nil)
+
 (provide 'init-evil)
