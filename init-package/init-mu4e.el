@@ -29,7 +29,16 @@
 
 ;; when you want to use some external command for text->html
 ;; conversion, e.g. the 'html2text' program
-;; (setq mu4e-html2text-command "html2text")
+;(setq mu4e-html2text-command "html2markdown | grep -v '&nbsp_place_holder;'")
+(setq mu4e-html2text-command "html2text -utf8 -width 72")
+
+
+;; enable inline images
+(setq mu4e-view-show-images t)
+;; use imagemagick, if available
+(when (fboundp 'imagemagick-register-types)
+  (imagemagick-register-types))
+
 
 ;; the headers to show in the headers list -- a pair of a field
 ;; and its width, with `nil' meaning 'unlimited'
