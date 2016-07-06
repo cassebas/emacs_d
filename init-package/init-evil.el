@@ -35,4 +35,10 @@
 ;;; unset the M-. keybinding as I want it for rtags completion
 (define-key evil-normal-state-map (kbd "M-.") nil)
 
+;;; prevent blinking of docview mode that is caused by evil
+(evil-set-initial-state 'doc-view-mode 'emacs)
+(add-hook 'doc-view-mode-hook
+          (lambda ()
+            (set (make-local-variable 'evil-emacs-state-cursor) (list nil))))
+
 (provide 'init-evil)
