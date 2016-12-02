@@ -85,6 +85,6 @@
 
 ;; font
 ;(set-default-font "SourceCodePro-10")
-(set-default-font "DejaVuSansMono-10")
+(set-default-font "DejaVuSansMono-11")
 
 (provide 'init-misc)
