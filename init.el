@@ -1,6 +1,6 @@
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -32,6 +32,7 @@
 
 (require 'init-c_cpp)
 (require 'init-evil)
+(require 'init-haskell)
 (require 'init-helm)
 (require 'init-helm-gtags)
 (require 'init-magit)
