@@ -1,7 +1,7 @@
 ;; configuration for mu4e
 ;; taken from
 ;; http://www.djcbsoftware.nl/code/mu/mu4e/Longer-configuration.html
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 (require 'mu4e)
 ;; use mu4e with evil key bindings
 (install-package 'evil-mu4e)
@@ -13,9 +13,9 @@
 ;; the next are relative to `mu4e-maildir'
 ;; instead of strings, they can be functions too, see
 ;; their docstring or the chapter 'Dynamic folders'
-(setq mu4e-sent-folder   "/sent"
-      mu4e-drafts-folder "/drafts"
-      mu4e-trash-folder  "/trash")
+(setq mu4e-sent-folder   "/Sent"
+      mu4e-drafts-folder "/Drafts"
+      mu4e-trash-folder  "/Trash")
 
 ;; the maildirs you use frequently; access them with 'j' ('jump')
 ;(setq mu4e-maildir-shortcuts
@@ -25,12 +25,12 @@
 ;      ("/sent"        . ?s)))
 
 ;; a  list of user's e-mail addresses
-(setq mu4e-user-mail-address-list '("c.treijtel@uva.nl"))
+(setq mu4e-user-mail-address-list '("c.treijtel@xs4all.nl"))
 
 ;; when you want to use some external command for text->html
 ;; conversion, e.g. the 'html2text' program
 ;(setq mu4e-html2text-command "html2markdown | grep -v '&nbsp_place_holder;'")
-(setq mu4e-html2text-command "html2text -utf8 -width 72")
+(setq mu4e-html2text-command "html2text2")
 
 
 ;; enable inline images
@@ -60,16 +60,16 @@
 
 ;; general emacs mail settings; used when composing e-mail
 ;; the non-mu4e-* stuff is inherited from emacs/message-mode
-(setq mu4e-reply-to-address "c.treijtel@uva.nl"
-      user-mail-address "c.treijtel@uva.nl"
+(setq mu4e-reply-to-address "c.treijtel@xs4all.nl"
+      user-mail-address "c.treijtel@xs4all.nl"
       user-full-name  "Caspar Treijtel")
 (setq mu4e-compose-signature
-   "Caspar Treijtel \nUniversiteit van Amsterdam\n")
+   "Caspar Treijtel")
 
 ;; smtp mail setting
 (setq
    message-send-mail-function 'smtpmail-send-it
-   smtpmail-default-smtp-server "smtp.uva.nl"
+   smtpmail-default-smtp-server "smtp.xs4all.nl"
    smtpmail-stream-type 'starttls
    ;; if you need offline mode, set these -- and create the queue dir
    ;; with 'mu mkdir', i.e.. mu mkdir /home/user/Maildir/queue
