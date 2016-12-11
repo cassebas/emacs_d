@@ -21,7 +21,13 @@
 (define-key c-mode-map [(tab)] 'company-complete)
 (define-key c++-mode-map [(tab)] 'company-complete)
 
+;;;;; Fill-column indicator in c-mode
+(add-hook 'c-mode-hook (lambda () (fci-mode 1)))
+(add-hook 'c++-mode-hook (lambda () (fci-mode 1)))
 
+;;;;; Turn on line numbers in c-mode
+(add-hook 'c-mode-hook (lambda () (linum-mode 1)))
+(add-hook 'c++-mode-hook (lambda () (linum-mode 1)))
 
 ;;;;; flycheck
 (install-package 'flycheck)

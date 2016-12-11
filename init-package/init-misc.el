@@ -53,7 +53,9 @@
 (global-visual-line-mode 1)
 
 ;;; Turn on line numbers
-(global-linum-mode 1)
+;; 2016-12-11 commented global linum mode, since it
+;; disturbes some modes, e.g. mu4e (for mail)
+;(global-linum-mode 1)
 
 ;;; no menu-bar nor tool-bar
 (menu-bar-mode -1)
@@ -74,7 +76,7 @@
          (not (string-match "^\*.*\*$" (buffer-name)))
          (not (eq major-mode 'dired-mode)))
         (fci-mode t))))
-(global-fci-mode t)
+;(global-fci-mode t)
 (setq fci-rule-column 80)
 (if (daemonp)
     (setq fci-rule-color "gray26")
