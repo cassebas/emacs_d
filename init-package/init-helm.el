@@ -3,6 +3,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (install-package 'helm)
+(install-package 'helm-ag)
 (require 'helm)
 (require 'helm-config)
 
@@ -24,6 +25,13 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 (global-set-key (kbd "C-c h o") 'helm-occur)
+
+
+;; prefer helm-ag over incremental search (for which I use the vim-like '/')
+;; helm-ag does a lot more than search the current buffer ofcourse, but
+;; that's what I want anyways.
+(global-set-key (kbd "C-s") 'helm-ag)
+
 
 (when (executable-find "curl")
   (setq helm-google-suggest-use-curl-p t))
