@@ -36,6 +36,7 @@
 (require 'init-haskell)
 (require 'init-helm)
 (require 'init-helm-gtags)
+(require 'init-latex)
 (require 'init-magit)
 (require 'init-mu4e)
 (require 'init-projectile)
