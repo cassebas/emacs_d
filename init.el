@@ -12,7 +12,7 @@
                            evil-magit
                            company
                            company-c-headers
-                           flycheck 
+                           flycheck
                            undo-tree))
 
 (defun install-default-packages()
