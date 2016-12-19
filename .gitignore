@@ -10,3 +10,4 @@ anaconda-mode
 /projectile.cache
 /session.*
 /bookmarks
+/eshell
