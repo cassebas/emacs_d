@@ -16,6 +16,7 @@
  "g" 'magit-status
  "k" 'kill-buffer
  "p" 'projectile-find-file)
+ "m" 'mu4e
 
 
 (require 'evil)

@@ -17,12 +17,10 @@
       mu4e-drafts-folder "/Drafts"
       mu4e-trash-folder  "/Trash")
 
-;; the maildirs you use frequently; access them with 'j' ('jump')
-;(setq mu4e-maildir-shortcuts
-;    '(("/archive"     . ?a)
-;      ("/inbox"       . ?i)
-;      ("/work"        . ?w)
-;      ("/sent"        . ?s)))
+;; the maildirs you use frequently; access them with 'J' ('jump')
+(setq mu4e-maildir-shortcuts
+    '(("/inbox"       . ?i)
+      ("/sent"        . ?s)))
 
 ;; a  list of user's e-mail addresses
 (setq mu4e-user-mail-address-list '("c.treijtel@xs4all.nl"))
@@ -79,5 +77,11 @@
 
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
+
+;; don't keep asking me 'are you sure you want to quit?'
+(setq mu4e-confirm-quit nil)
+
+;; possible fix for having mu4e work togehter with mbsync
+(setq mu4e-change-filenames-when-moving t)
 
 (provide 'init-mu4e)
