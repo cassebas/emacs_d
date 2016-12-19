@@ -10,6 +10,7 @@
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
+ "SPC" 'ace-window
  "f" 'helm-find-files
  "b" 'switch-to-buffer
  "g" 'magit-status
