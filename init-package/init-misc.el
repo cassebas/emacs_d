@@ -43,6 +43,12 @@
 ;;; Always highlight parentheses
 (show-paren-mode t)
 
+;;; Use electric to automatically insert closing parentheses, brackets and such
+(electric-pair-mode t)
+
+;;; Higlight current line
+(global-hl-line-mode t)
+
 ;; use space to indent by default
 (setq-default indent-tabs-mode nil)
 
