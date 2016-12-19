@@ -15,8 +15,10 @@
  "b" 'switch-to-buffer
  "g" 'magit-status
  "k" 'kill-buffer
- "p" 'projectile-find-file)
+ "a" 'helm-ag
+ "p" 'projectile-find-file
  "m" 'mu4e
+ "x" 'helm-M-x)
 
 
 (require 'evil)
