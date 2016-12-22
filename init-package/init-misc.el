@@ -3,6 +3,9 @@
 ;;; install color theme
 (install-package 'spacemacs-theme)
 
+;; systemd mode for editing systemd files
+(install-package 'systemd)
+
 ;;; syntax highlighting
 ;(require 'mcrl2-syntax)
 
