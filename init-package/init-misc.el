@@ -35,7 +35,7 @@
               (lambda (frame)
                 (with-selected-frame frame
                   (require 'spacemacs-dark-theme)
-                  ;(my-whitespace-settings "gray26" "inherit")
+                  (my-whitespace-settings "gray26" "inherit")
                   (set-face-attribute 'font-lock-comment-face nil :foreground "OliveDrab"))))
   (require 'spacemacs-light-theme)
   (my-whitespace-settings "gainsboro" "inherit"))
