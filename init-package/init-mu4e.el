@@ -54,7 +54,12 @@
 
 ;; If you get your mail without an explicit command,
 ;; use "true" for the command (this is the default)
-(setq mu4e-get-mail-command "isync")
+;; Set to 'true' to have mu4e only update the index, the mail
+;; retrieval is done by an external process (using a
+;; systemd service unit).
+(setq mu4e-get-mail-command "true")
+;; Have mu4e update the index every 5 minutes.
+(setq mu4e-update-interval 300)
 
 ;; general emacs mail settings; used when composing e-mail
 ;; the non-mu4e-* stuff is inherited from emacs/message-mode
