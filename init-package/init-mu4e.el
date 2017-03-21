@@ -61,6 +61,11 @@
 ;; Have mu4e update the index every 5 minutes.
 (setq mu4e-update-interval 300)
 
+;; customize the reply-quote-string
+;; M-x find-function RET message-citation-line-format for docs
+(setq message-citation-line-format "On %a, %b %d %Y at %r, %f wrote:\n")
+(setq message-citation-line-function 'message-insert-formatted-citation-line)
+
 ;; general emacs mail settings; used when composing e-mail
 ;; the non-mu4e-* stuff is inherited from emacs/message-mode
 (setq mu4e-reply-to-address "c.treijtel@xs4all.nl"
