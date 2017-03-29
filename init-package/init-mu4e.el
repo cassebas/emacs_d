@@ -10,20 +10,62 @@
 ;; path to our Maildir directory
 (setq mu4e-maildir "/home/caspar/Maildir")
 
-;; the next are relative to `mu4e-maildir'
-;; instead of strings, they can be functions too, see
-;; their docstring or the chapter 'Dynamic folders'
-(setq mu4e-sent-folder   "/Sent"
-      mu4e-drafts-folder "/Drafts"
-      mu4e-trash-folder  "/Trash")
+;; Define mu4e context for multiple mail accounts
+(setq mu4e-contexts
+      `(
+        ,(make-mu4e-context
+          :name "xs4allmail"
+          :enter-func (lambda() (mu4e-message "Entering xs4allmail context"))
+          :leave-func (lambda() (mu4e-message "Leaving xs4allmail context"))
+          :match-func (lambda(msg) (when msg
+                                     (mu4e-message-contact-field-matches msg
+                                                                         :to "c.treijtel@xs4all.nl")))
+          :vars '(
+                  (user-mail-address . "c.treijtel@xs4all.nl")
+                  (user-full-name . "Caspar Treijtel")
+                  (mu4e-trash-folder . "/xs4allmail/Trash")
+                  (mu4e-sent-folder . "/xs4allmail/Sent")
+                  (mu4e-drafts-folder . "/xs4allmail/Drafts")
+                  )
+          )
+        ,(make-mu4e-context
+          :name "tudelftmail"
+          :enter-func (lambda() (mu4e-message "Entering tudelftmail context"))
+          :leave-func (lambda() (mu4e-message "Leaving tudelftmail context"))
+          :match-func (lambda(msg) (when msg
+                                     (mu4e-message-contact-field-matches msg
+                                                                         :to "c.treijtel@xs4all.nl")))
+          :vars '(
+                  (user-mail-address . "c.treijtel@student.tudelft.nl")
+                  (user-full-name . "Caspar Treijtel")
+                  (mu4e-trash-folder . "/tudelftmail/Deleted Items")
+                  (mu4e-sent-folder . "/tudelftmail/Sent Messages")
+                  (mu4e-drafts-folder . "/tudelftmail/Drafts")
+                  )
+          )
+        )
+      )
+
 
 ;; the maildirs you use frequently; access them with 'J' ('jump')
-(setq mu4e-maildir-shortcuts
-    '(("/inbox"       . ?i)
-      ("/sent"        . ?s)))
+;(setq mu4e-maildir-shortcuts
+;    '(("/xs4allmail/inbox"  . ?i)
+;      ("/xs4allmail/sent"   . ?s)))
 
-;; a  list of user's e-mail addresses
-(setq mu4e-user-mail-address-list '("c.treijtel@xs4all.nl"))
+; Prepend my own bookmark to the standard bookmarks list
+(add-to-list 'mu4e-bookmarks
+             (make-mu4e-bookmark
+              :name "Inbox messages all accounts"
+              :query "maildir:/xs4allmail/INBOX OR maildir:/tudelftmail/INBOX"
+              :key ?i))
+
+;; Some handy bookmarks
+;(setq mu4e-bookmarks '(("maildir:/xs4allmail/INBOX OR maildir:/tudelftmail/INBOX" "INBOX" ?i)
+;                       ("flag:unread"     "Unread messages"      ?u)
+;                       ("date:today..now" "Today's messages"     ?t)
+;                       ("date:7d..now"    "Last 7 days"          ?w)
+;                       ("mime:image/*"    "Messages with images" ?p)))
+
 
 ;; when you want to use some external command for text->html
 ;; conversion, e.g. the 'html2text' program
