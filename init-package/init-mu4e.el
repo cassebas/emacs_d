@@ -10,6 +10,15 @@
 ;; path to our Maildir directory
 (setq mu4e-maildir "/home/caspar/Maildir")
 
+;; Use gnus smtpmail
+(setq message-send-mail-function 'smtpmail-send-it)
+
+;; Default settings for smtpmail
+(setq smtpmail-default-smtp-server "smtp.xs4all.nl"
+      smtpmail-smtp-server "smtp.xs4all.nl"
+      smtpmail-stream-type 'ssl
+      smtpmail-smtp-service 465)
+
 ;; Define mu4e context for multiple mail accounts
 (setq mu4e-contexts
       `(
@@ -23,6 +32,11 @@
           :vars '(
                   (user-mail-address . "c.treijtel@xs4all.nl")
                   (user-full-name . "Caspar Treijtel")
+                  (smtpmail-smtp-server . "smtp.xs4all.nl")
+                  (smtpmail-smtp-user . "cassebas")
+                  ;; the list vars is already quoted so use unquoted starttls/ssl
+                  (smtpmail-stream-type . ssl)
+                  (smtpmail-smtp-service . 465)
                   (mu4e-trash-folder . "/xs4allmail/Trash")
                   (mu4e-sent-folder . "/xs4allmail/Sent")
                   (mu4e-drafts-folder . "/xs4allmail/Drafts")
@@ -38,6 +52,11 @@
           :vars '(
                   (user-mail-address . "c.treijtel@student.tudelft.nl")
                   (user-full-name . "Caspar Treijtel")
+                  (smtpmail-smtp-server . "smtp-a.tudelft.nl")
+                  (smtpmail-smtp-user . "ctreijtel@tudelft.net")
+                  ;; the list vars is already quoted so use unquoted starttls/ssl
+                  (smtpmail-stream-type . ssl)
+                  (smtpmail-smtp-service . 465)
                   (mu4e-trash-folder . "/tudelftmail/Deleted Items")
                   (mu4e-sent-folder . "/tudelftmail/Sent Messages")
                   (mu4e-drafts-folder . "/tudelftmail/Drafts")
@@ -46,6 +65,9 @@
         )
       )
 
+;; start with the first (default) context;
+;; default is to ask-if-none (ask when there's no context yet, and none match)
+(setq mu4e-context-policy 'pick-first)
 
 ;; the maildirs you use frequently; access them with 'J' ('jump')
 ;(setq mu4e-maildir-shortcuts
@@ -58,19 +80,6 @@
               :name "Inbox messages all accounts"
               :query "maildir:/xs4allmail/INBOX OR maildir:/tudelftmail/INBOX"
               :key ?i))
-
-;; Some handy bookmarks
-;(setq mu4e-bookmarks '(("maildir:/xs4allmail/INBOX OR maildir:/tudelftmail/INBOX" "INBOX" ?i)
-;                       ("flag:unread"     "Unread messages"      ?u)
-;                       ("date:today..now" "Today's messages"     ?t)
-;                       ("date:7d..now"    "Last 7 days"          ?w)
-;                       ("mime:image/*"    "Messages with images" ?p)))
-
-
-;; when you want to use some external command for text->html
-;; conversion, e.g. the 'html2text' program
-;(setq mu4e-html2text-command "html2markdown | grep -v '&nbsp_place_holder;'")
-(setq mu4e-html2text-command "html2text2")
 
 
 ;; enable inline images
@@ -110,22 +119,11 @@
 
 ;; general emacs mail settings; used when composing e-mail
 ;; the non-mu4e-* stuff is inherited from emacs/message-mode
-(setq mu4e-reply-to-address "c.treijtel@xs4all.nl"
-      user-mail-address "c.treijtel@xs4all.nl"
-      user-full-name  "Caspar Treijtel")
+;(setq mu4e-reply-to-address "c.treijtel@xs4all.nl"
+;      user-mail-address "c.treijtel@xs4all.nl"
+;      user-full-name  "Caspar Treijtel")
 (setq mu4e-compose-signature
    "Caspar Treijtel")
-
-;; smtp mail setting
-(setq
-   message-send-mail-function 'smtpmail-send-it
-   smtpmail-default-smtp-server "smtp.xs4all.nl"
-   smtpmail-stream-type 'starttls
-   ;; if you need offline mode, set these -- and create the queue dir
-   ;; with 'mu mkdir', i.e.. mu mkdir /home/user/Maildir/queue
-   ;smtpmail-queue-mail  nil
-   ;smtpmail-queue-dir  "/home/user/Maildir/queue/cur")
-   smtpmail-smtp-service 587)
 
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
