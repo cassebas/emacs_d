@@ -42,6 +42,7 @@
 (require 'init-movepoint)
 (require 'init-c_cpp)
 (require 'init-evil)
+(require 'init-ess)
 (require 'init-haskell)
 (require 'init-helm)
 (require 'init-helm-gtags)
