@@ -45,7 +45,12 @@
 (install-package 'auto-complete)
 (install-package 'company)
 (install-package 'company-c-headers)
-(install-package 'rtags)
+;; rtags.el is already installed in /usr/share/emacs/site-lisp/rtags
+;; use the rtags.el from the AUR installed version, instead of the MELPA
+;; version (to avoid version conflicts)
+;  NOT: (install-package 'rtags)
+(setq load-path (cons "/usr/share/emacs/site-lisp/rtags" load-path))
+(require 'rtags)
 
 (require 'company)
 (require 'company-c-headers)
