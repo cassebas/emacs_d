@@ -108,7 +108,7 @@
 ;; Set to 'true' to have mu4e only update the index, the mail
 ;; retrieval is done by an external process (using a
 ;; systemd service unit).
-(setq mu4e-get-mail-command "true")
+(setq mu4e-get-mail-command "mbsync -a")
 ;; Have mu4e update the index every 5 minutes.
 (setq mu4e-update-interval 300)
 
