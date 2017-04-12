@@ -11,3 +11,4 @@ anaconda-mode
 /session.*
 /bookmarks
 /eshell
+/network-security.data
