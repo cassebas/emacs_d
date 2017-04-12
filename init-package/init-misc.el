@@ -20,12 +20,12 @@
     ))
 (global-whitespace-mode 1)
 
-(defun my-whitespace-settings (whitespace-color background-color)
+(defun my-whitespace-settings (whitespace-color)
   " Correct some minor details for improvement of font-lock"
-  (set-face-attribute 'font-lock-comment-face nil :background "inherit")
-  (set-face-attribute 'whitespace-space nil :foreground whitespace-color :background background-color)
-  (set-face-attribute 'whitespace-newline nil :foreground whitespace-color :background background-color)
-  (set-face-attribute 'whitespace-tab nil :foreground whitespace-color :background background-color))
+  (set-face-attribute 'font-lock-comment-face nil :background (face-background 'default))
+  (set-face-attribute 'whitespace-space nil :foreground whitespace-color :background (face-background 'default))
+  (set-face-attribute 'whitespace-newline nil :foreground whitespace-color :background (face-background 'default))
+  (set-face-attribute 'whitespace-tab nil :foreground whitespace-color :background (face-background 'default)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;; make sure emacsclient in daemon mode correctly uses color theme      ;;;;;
@@ -35,10 +35,10 @@
               (lambda (frame)
                 (with-selected-frame frame
                   (require 'spacemacs-dark-theme)
-                  (my-whitespace-settings "gray26" "inherit")
+                  (my-whitespace-settings "gray26")
                   (set-face-attribute 'font-lock-comment-face nil :foreground "OliveDrab"))))
   (require 'spacemacs-light-theme)
-  (my-whitespace-settings "gainsboro" "inherit"))
+  (my-whitespace-settings "gainsboro"))
 
 ;;; Prevent startup screen
 (setq inhibit-splash-screen t)
