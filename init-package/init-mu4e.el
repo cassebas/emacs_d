@@ -128,9 +128,9 @@
 ;; Set to 'true' to have mu4e only update the index, the mail
 ;; retrieval is done by an external process (using a
 ;; systemd service unit).
-(setq mu4e-get-mail-command "mbsync -a")
-;; Have mu4e update the index every 5 minutes.
-(setq mu4e-update-interval 300)
+(setq mu4e-get-mail-command "true")
+;; Have mu4e update the index every 2 minutes.
+(setq mu4e-update-interval 120)
 
 ;; customize the reply-quote-string
 ;; M-x find-function RET message-citation-line-format for docs
