@@ -109,6 +109,12 @@
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Compose messages in new frame ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq mu4e-compose-in-new-frame t)
+
+
 ;; the headers to show in the headers list -- a pair of a field
 ;; and its width, with `nil' meaning 'unlimited'
 ;; (better only use that for the last field.
