@@ -120,7 +120,7 @@
 ;; (better only use that for the last field.
 ;; These are the defaults:
 (setq mu4e-headers-fields
-    '( (:date          .  25)    ;; alternatively, use :human-date
+    '( (:human-date    .  25)    ;; alternatively, use :human-date
        (:flags         .   6)
        (:from          .  22)
        (:subject       .  nil))) ;; alternatively, use :thread-subject
@@ -150,6 +150,18 @@
 ;      user-full-name  "Caspar Treijtel")
 (setq mu4e-compose-signature
    "Caspar Treijtel")
+(setq mu4e-compose-signature-auto-include nil)
+
+;; Compose mail in a new frame
+(setq mu4e-compose-in-new-frame t)
+
+;; according to [[https://vxlabs.com/tag/mu4e/][vxlabs]]:
+;; ``HTML has won the email format war''
+;; Maybe [s]he's right:)
+(setq mu4e-compose-format-flowed t)
+
+;; Don't cc myself
+(setq mu4e-compose-keep-self-cc nil)
 
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
