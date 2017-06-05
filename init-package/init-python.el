@@ -3,6 +3,12 @@
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'pyenv-mode)
 
+;; Show line numbers when editing python code.
+(add-hook 'python-mode-hook (lambda () (linum-mode 1)))
+
+;; Show the fill column indicator when editing python code.
+(add-hook 'python-mode-hook (lambda () (fci-mode 1)))
+
 ;; The following function will be called upon a projectile
 ;; hook that will run when C-c p p is issued (projectile-switch-project)
 (defun projectile-pyenv-mode-set ()
