@@ -103,7 +103,7 @@
 (install-package 'powerline-evil)
 (require 'powerline)
 (require 'powerline-evil)
-(powerline-evil-center-color-theme)
+(powerline-evil-vim-color-theme)
 
 
 (provide 'init-misc)
