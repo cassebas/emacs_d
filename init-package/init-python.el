@@ -14,6 +14,11 @@
 
 (add-hook 'projectile-after-switch-project-hook 'projectile-pyenv-mode-set)
 
+;; Make sure that also when running from a different environment,
+;; the pyenv path is set.
+(setq exec-path (cons "/home/caspar/.pyenv/shims" exec-path))
+
+
 (install-package 'company-anaconda)
 (eval-after-load "company"
   '(add-to-list 'company-backends 'company-anaconda))
