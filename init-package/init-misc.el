@@ -98,4 +98,12 @@
 ;(set-default-font "SourceCodePro-10")
 (set-default-font "DejaVuSansMono-11")
 
+;; Powerline
+(install-package 'powerline)
+(install-package 'powerline-evil)
+(require 'powerline)
+(require 'powerline-evil)
+(powerline-evil-center-color-theme)
+
+
 (provide 'init-misc)
