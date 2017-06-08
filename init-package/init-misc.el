@@ -10,7 +10,7 @@
 ;(require 'mcrl2-syntax)
 
 ;;; Configure whitespaces
-(setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark)))
+(setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark trailing)))
 (setq whitespace-display-mappings
   ;; all numbers are Unicode codepoint in decimal. ⁖ (insert-char 182 1)
   '(
@@ -20,9 +20,13 @@
     ))
 (global-whitespace-mode 1)
 
+;;; always show trailing whitespaces
+(setq show-trailing-whitespace t)
+
 (defun my-whitespace-settings (whitespace-color)
   " Correct some minor details for improvement of font-lock"
   (set-face-attribute 'font-lock-comment-face nil :background (face-background 'default))
+  (set-face-attribute 'whitespace-trailing nil :foreground "red1" :background "yellow1")
   (set-face-attribute 'whitespace-space nil :foreground whitespace-color :background (face-background 'default))
   (set-face-attribute 'whitespace-newline nil :foreground whitespace-color :background (face-background 'default))
   (set-face-attribute 'whitespace-tab nil :foreground whitespace-color :background (face-background 'default)))
@@ -39,6 +43,7 @@
                   (set-face-attribute 'font-lock-comment-face nil :foreground "OliveDrab"))))
   (require 'spacemacs-light-theme)
   (my-whitespace-settings "gainsboro"))
+
 
 ;;; Prevent startup screen
 (setq inhibit-splash-screen t)
