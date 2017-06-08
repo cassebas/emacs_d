@@ -18,8 +18,6 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
-(define-key c-mode-map [(tab)] 'company-complete)
-(define-key c++-mode-map [(tab)] 'company-complete)
 
 ;;;;; Fill-column indicator in c-mode
 (add-hook 'c-mode-hook (lambda () (fci-mode 1)))
@@ -42,25 +40,33 @@
 ;;; Configure rtags ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;
 
-(install-package 'auto-complete)
+;(install-package 'auto-complete)
 (install-package 'company)
-(install-package 'company-c-headers)
+;(install-package 'company-c-headers)
+
 ;; rtags.el is already installed in /usr/share/emacs/site-lisp/rtags
 ;; use the rtags.el from the AUR installed version, instead of the MELPA
 ;; version (to avoid version conflicts)
 ;  NOT: (install-package 'rtags)
 (setq load-path (cons "/usr/share/emacs/site-lisp/rtags" load-path))
 (require 'rtags)
+(require 'company-rtags)
+(require 'helm-rtags)
+(require 'flycheck-rtags)
 
-(require 'company)
-(require 'company-c-headers)
+(setq rtags-use-helm t)
 
-;;; maybe start the rdm service
-(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
-(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+;(require 'company)
+;(require 'company-c-headers)
+
+;;; maybe start the rdm service [now is a systemd unit]
+;(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
+;(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
 
 (setq rtags-autostart-diagnostics t)
 (rtags-diagnostics)
+
+(setq rtags-completions-enabled t)
 
 ;;; have standard keybindings (prefix for commands is C-c r)
 (rtags-enable-standard-keybindings)
@@ -76,19 +82,30 @@
 (define-key c-mode-base-map (kbd "M-n") (function rtags-next-match))
 (define-key c-mode-base-map (kbd "M-p") (function rtags-previous-match))
 
-;;; work together with company
-(add-to-list 'company-c-headers-path-system "/usr/include")
-(add-to-list 'company-c-headers-path-system "/usr/local/include")
-(add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9")
-(add-to-list 'company-c-headers-path-system "/usr/include/x86_64_linux-gnu/c++/4.9")
-;; configure backends for company
-(setq rtags-completions-enabled t)
-(setq company-backends (delete 'company-semantic company-backends))
-(push 'company-rtags company-backends)
-(push 'company-c-headers company-backends)
-(global-company-mode)
+;;;;; Irony mode for code completion
+(install-package 'irony)
+(install-package 'company-irony)
 
-;;; turn on rtags flycheck support
-(require 'flycheck-rtags)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'c++-mode-hook 'irony-mode)
+
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+
+(install-package 'company-irony-c-headers)
+(require 'company-irony-c-headers)
+
+(setq company-backends (delete 'company-semantic company-backends))
+(eval-after-load 'company
+  '(add-to-list
+    'company-backends '(company-irony-c-headers company-irony company-rtags)))
+
+(define-key c-mode-map [(tab)] 'company-complete)
+(define-key c++-mode-map [(tab)] 'company-complete)
+
+;; integrate irony with flycheck
+(install-package 'flycheck-irony)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
 (provide 'init-c_cpp)
