@@ -101,7 +101,7 @@
 
 ;; font
 ;(set-default-font "SourceCodePro-10")
-(set-default-font "DejaVuSansMono-11")
+(set-frame-font "DejaVuSansMono-11")
 
 ;; Powerline
 (install-package 'powerline)
