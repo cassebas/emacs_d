@@ -110,5 +110,29 @@
 (require 'powerline-evil)
 (powerline-evil-vim-color-theme)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ace-jump-mode for quickly jump to specific words ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(install-package 'ace-jump-mode)
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+
+(define-key evil-normal-state-map (kbd "SPC j") 'ace-jump-mode)
+
+;;
+;; enable a more powerful jump back function from ace jump mode
+;;
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+
+(define-key evil-normal-state-map (kbd "SPC J") 'ace-jump-mode-pop-mark)
 
 (provide 'init-misc)
