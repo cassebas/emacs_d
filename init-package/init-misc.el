@@ -135,4 +135,10 @@
 
 (define-key evil-normal-state-map (kbd "SPC J") 'ace-jump-mode-pop-mark)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; flyspell checking in text mode ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-hook 'text-mode-hook 'flyspell-mode)
+
+
 (provide 'init-misc)
