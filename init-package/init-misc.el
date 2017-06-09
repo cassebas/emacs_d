@@ -103,12 +103,12 @@
 ;(set-default-font "SourceCodePro-10")
 (set-frame-font "DejaVuSansMono-11")
 
-;; Powerline
-(install-package 'powerline)
-(install-package 'powerline-evil)
-(require 'powerline)
-(require 'powerline-evil)
-(powerline-evil-vim-color-theme)
+;; Smart mode line
+(install-package 'smart-mode-line)
+(install-package 'smart-mode-line-powerline-theme)
+(setq sml/no-confirm-load-theme t)
+(setq sml/theme 'respectful)
+(sml/setup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ace-jump-mode for quickly jump to specific words ;
