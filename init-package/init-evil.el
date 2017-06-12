@@ -23,6 +23,9 @@
 
 (require 'evil)
 (evil-mode t)
+;;; Have evil-like keybindings for magit
+(require 'evil-magit)
+
 ;;; i like evil but I do want my C-e back!
 (define-key evil-normal-state-map (kbd "C-e") 'end-of-visual-line)
 (define-key evil-motion-state-map (kbd "C-e") 'end-of-visual-line)
