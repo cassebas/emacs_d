@@ -11,7 +11,6 @@
  t)
 
 (package-initialize)
-(package-refresh-contents)
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
