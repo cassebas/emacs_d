@@ -2,6 +2,7 @@
 
 ;;; install color theme
 (install-package 'spacemacs-theme)
+(install-package 'color-theme-solarized)
 
 ;; systemd mode for editing systemd files
 (install-package 'systemd)
@@ -31,19 +32,48 @@
   (set-face-attribute 'whitespace-newline nil :foreground whitespace-color :background (face-background 'default))
   (set-face-attribute 'whitespace-tab nil :foreground whitespace-color :background (face-background 'default)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;; fill column indicator      ;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(install-package 'fill-column-indicator)
+(require 'fill-column-indicator)
+(define-globalized-minor-mode global-fci-mode fci-mode
+  (lambda()
+    (if (and
+         (not (string-match "^\*.*\*$" (buffer-name)))
+         (not (eq major-mode 'dired-mode)))
+        (fci-mode t))))
+(setq fci-rule-column 80)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;; make sure emacsclient in daemon mode correctly uses color theme      ;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (with-selected-frame frame
-                  (require 'spacemacs-dark-theme)
-                  (my-whitespace-settings "gray26")
-                  (set-face-attribute 'font-lock-comment-face nil :foreground "OliveDrab"))))
-  (require 'spacemacs-light-theme)
-  (my-whitespace-settings "gainsboro"))
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (with-selected-frame frame
+              (if (display-graphic-p frame)
+                  (progn
+                    (set-frame-parameter frame 'background-mode 'light)
+                    (set-terminal-parameter frame 'background-mode 'light)
+                    (load-theme 'solarized t)
+                    (setq fci-rule-color "gainsboro")
+                    (my-whitespace-settings "gainsboro"))
+                (progn
+                  (set-frame-parameter frame 'background-mode 'dark)
+                  (set-terminal-parameter frame 'background-mode 'dark)
+                  (load-theme 'solarized t)
+                  (setq fci-rule-color "black")
+                  (my-whitespace-settings "black"))))))
+;(set-face-attribute 'font-lock-comment-face nil :foreground "OliveDrab"))))
+;(load-theme 'solarized)
 
+;; (add-hook 'after-make-frame-functions
+;;           (lambda (frame)
+;;             (let ((mode (if (display-graphic-p frame) 'light 'dark)))
+;;               (set-frame-parameter frame 'background-mode mode)
+;;               (set-terminal-parameter frame 'background-mode mode))
+;;             (enable-theme 'solarized)))
 
 ;;; Prevent startup screen
 (setq inhibit-splash-screen t)
@@ -78,30 +108,13 @@
 ;;; for writing latex
 (install-package 'auctex)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;; fill column indicator      ;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(install-package 'fill-column-indicator)
-(require 'fill-column-indicator)
-(define-globalized-minor-mode global-fci-mode fci-mode
-  (lambda()
-    (if (and
-         (not (string-match "^\*.*\*$" (buffer-name)))
-         (not (eq major-mode 'dired-mode)))
-        (fci-mode t))))
-;(global-fci-mode t)
-(setq fci-rule-column 80)
-(if (daemonp)
-    (setq fci-rule-color "gray26")
-  (setq fci-rule-color "gainsboro"))
-
 ;;; also show column number in the status bar
 (setq column-number-mode t)
 
 ;; font
 ;(set-default-font "SourceCodePro-10")
 (set-frame-font "DejaVuSansMono-11")
+(set-frame-font "Inconsolata-12")
 
 ;; Smart mode line
 (install-package 'smart-mode-line)
