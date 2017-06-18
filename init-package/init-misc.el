@@ -113,7 +113,7 @@
 
 ;; font
 ;(set-default-font "SourceCodePro-10")
-(set-frame-font "DejaVuSansMono-11")
+;(set-frame-font "DejaVuSansMono-11")
 (set-frame-font "Inconsolata-12")
 
 ;; Smart mode line
