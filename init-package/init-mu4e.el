@@ -7,6 +7,11 @@
 (install-package 'evil-mu4e)
 (require 'evil-mu4e)
 
+;; notify me when new mail arrives
+(install-package 'mu4e-alert)
+(mu4e-alert-set-default-style 'libnotify)
+(add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
+
 ;; path to our Maildir directory
 (setq mu4e-maildir "/home/caspar/Maildir")
 
@@ -136,7 +141,10 @@
 ;; systemd service unit).
 (setq mu4e-get-mail-command "true")
 ;; Have mu4e update the index every 2 minutes.
-(setq mu4e-update-interval 120)
+;;  2017-06-21 switched to imapnotify for push notifications!
+;;             set update interval to nil to disable periodic
+;;             contacting the mail server;
+(setq mu4e-update-interval nil)
 
 ;; customize the reply-quote-string
 ;; M-x find-function RET message-citation-line-format for docs
