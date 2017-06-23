@@ -48,4 +48,11 @@
           (lambda ()
             (set (make-local-variable 'evil-emacs-state-cursor) (list nil))))
 
+;;; prevent q from being bound to record macro in view mode, examples are:
+;;;   - raw message view in mu4e
+;;;   - compilation error window in haskell-mode (doesn't work)
+(add-hook 'view-mode-hook 'evil-motion-state)
+;(add-hook 'haskell-error-mode 'evil-motion-state)
+
+
 (provide 'init-evil)
