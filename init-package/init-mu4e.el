@@ -166,7 +166,7 @@
 ;; according to [[https://vxlabs.com/tag/mu4e/][vxlabs]]:
 ;; ``HTML has won the email format war''
 ;; Maybe [s]he's right:)
-(setq mu4e-compose-format-flowed t)
+(setq mu4e-compose-format-flowed nil)
 
 ;; Don't cc myself
 (setq mu4e-compose-keep-self-cc nil)
