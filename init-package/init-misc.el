@@ -85,7 +85,7 @@
 (electric-pair-mode t)
 
 ;;; Higlight current line
-(global-hl-line-mode t)
+(global-hl-line-mode nil)
 
 ;; use space to indent by default
 (setq-default indent-tabs-mode nil)
