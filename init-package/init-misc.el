@@ -26,11 +26,11 @@
 
 (defun my-whitespace-settings (whitespace-color)
   " Correct some minor details for improvement of font-lock"
-  (set-face-attribute 'font-lock-comment-face nil :background (face-background 'default))
-  (set-face-attribute 'whitespace-trailing nil :foreground "red1" :background "yellow1")
-  (set-face-attribute 'whitespace-space nil :foreground whitespace-color :background (face-background 'default))
-  (set-face-attribute 'whitespace-newline nil :foreground whitespace-color :background (face-background 'default))
-  (set-face-attribute 'whitespace-tab nil :foreground whitespace-color :background (face-background 'default)))
+  (set-face-attribute 'font-lock-comment-face t :background (face-background 'default))
+  (set-face-attribute 'whitespace-trailing t :foreground "red1" :background "yellow1")
+  (set-face-attribute 'whitespace-space t :foreground whitespace-color :background (face-background 'default))
+  (set-face-attribute 'whitespace-newline t :foreground whitespace-color :background (face-background 'default))
+  (set-face-attribute 'whitespace-tab t :foreground whitespace-color :background (face-background 'default)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;; fill column indicator      ;;;;;
