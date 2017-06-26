@@ -54,8 +54,8 @@
             (with-selected-frame frame
               (if (display-graphic-p frame)
                   (progn
-                    (set-frame-parameter frame 'background-mode 'light)
-                    (set-terminal-parameter frame 'background-mode 'light)
+                    (set-frame-parameter frame 'background-mode 'dark)
+                    (set-terminal-parameter frame 'background-mode 'dark)
                     (load-theme 'solarized t)
                     (setq fci-rule-color "gainsboro")
                     (my-whitespace-settings "gainsboro"))
