@@ -112,9 +112,8 @@
 (setq column-number-mode t)
 
 ;; font
-;(set-default-font "SourceCodePro-10")
-;(set-frame-font "DejaVuSansMono-11")
-(set-frame-font "Inconsolata-12")
+;; The following will make the font appear correctly in daemon mode
+(add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
 
 ;; Smart mode line
 (install-package 'smart-mode-line)
