@@ -24,13 +24,13 @@
 ;;; always show trailing whitespaces
 (setq show-trailing-whitespace t)
 
-(defun my-whitespace-settings (whitespace-color)
+(defun my-whitespace-settings (frame whitespace-color)
   " Correct some minor details for improvement of font-lock"
-  (set-face-attribute 'font-lock-comment-face t :background (face-background 'default))
-  (set-face-attribute 'whitespace-trailing t :foreground "red1" :background "yellow1")
-  (set-face-attribute 'whitespace-space t :foreground whitespace-color :background (face-background 'default))
-  (set-face-attribute 'whitespace-newline t :foreground whitespace-color :background (face-background 'default))
-  (set-face-attribute 'whitespace-tab t :foreground whitespace-color :background (face-background 'default)))
+  (set-face-attribute 'font-lock-comment-face frame :background (face-background 'default))
+  (set-face-attribute 'whitespace-trailing frame :foreground "red1" :background "yellow1")
+  (set-face-attribute 'whitespace-space frame :foreground whitespace-color :background (face-background 'default))
+  (set-face-attribute 'whitespace-newline frame :foreground whitespace-color :background (face-background 'default))
+  (set-face-attribute 'whitespace-tab frame :foreground whitespace-color :background (face-background 'default)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;; fill column indicator      ;;;;;
@@ -52,28 +52,12 @@
 (add-hook 'after-make-frame-functions
           (lambda (frame)
             (with-selected-frame frame
-              (if (display-graphic-p frame)
-                  (progn
-                    (set-frame-parameter frame 'background-mode 'dark)
-                    (set-terminal-parameter frame 'background-mode 'dark)
-                    (load-theme 'solarized t)
-                    (setq fci-rule-color "gainsboro")
-                    (my-whitespace-settings "gainsboro"))
-                (progn
-                  (set-frame-parameter frame 'background-mode 'dark)
-                  (set-terminal-parameter frame 'background-mode 'dark)
-                  (load-theme 'solarized t)
-                  (setq fci-rule-color "black")
-                  (my-whitespace-settings "black"))))))
-;(set-face-attribute 'font-lock-comment-face nil :foreground "OliveDrab"))))
-;(load-theme 'solarized)
-
-;; (add-hook 'after-make-frame-functions
-;;           (lambda (frame)
-;;             (let ((mode (if (display-graphic-p frame) 'light 'dark)))
-;;               (set-frame-parameter frame 'background-mode mode)
-;;               (set-terminal-parameter frame 'background-mode mode))
-;;             (enable-theme 'solarized)))
+              (progn
+                (set-frame-parameter frame 'background-mode 'dark)
+                (set-terminal-parameter frame 'background-mode 'dark)
+                (load-theme 'solarized t)
+                (setq fci-rule-color "black")
+                (my-whitespace-settings frame "black")))))
 
 ;;; Prevent startup screen
 (setq inhibit-splash-screen t)
@@ -113,7 +97,7 @@
 
 ;; font
 ;; The following will make the font appear correctly in daemon mode
-(add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
+(add-to-list 'default-frame-alist '(font . "Inconsolata-14"))
 
 ;; Smart mode line
 (install-package 'smart-mode-line)
