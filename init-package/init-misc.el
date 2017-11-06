@@ -56,8 +56,8 @@
                 (set-frame-parameter frame 'background-mode 'dark)
                 (set-terminal-parameter frame 'background-mode 'dark)
                 (load-theme 'solarized t)
-                (setq fci-rule-color "black")
-                (my-whitespace-settings frame "black")))))
+                (setq fci-rule-color "#00212A")
+                (my-whitespace-settings frame "#00212A")))))
 
 ;;; Prevent startup screen
 (setq inhibit-splash-screen t)
