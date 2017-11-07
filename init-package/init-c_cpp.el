@@ -19,9 +19,9 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 
-;;;;; Fill-column indicator in c-mode
-(add-hook 'c-mode-hook (lambda () (fci-mode 1)))
-(add-hook 'c++-mode-hook (lambda () (fci-mode 1)))
+;; ;;;;; Fill-column indicator in c-mode
+;; (add-hook 'c-mode-hook (lambda () (fci-mode t)))
+;; (add-hook 'c++-mode-hook (lambda () (fci-mode t)))
 
 ;;;;; Turn on line numbers in c-mode
 (add-hook 'c-mode-hook (lambda () (linum-mode 1)))
