@@ -41,6 +41,7 @@
 
 (require 'init-movepoint)
 (require 'init-c_cpp)
+(require 'init-java)
 (require 'init-evil)
 (require 'init-ess)
 (require 'init-haskell)
