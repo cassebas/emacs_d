@@ -27,7 +27,7 @@
 (defun my-whitespace-settings (frame whitespace-color)
   " Correct some minor details for improvement of font-lock"
   (set-face-attribute 'font-lock-comment-face frame :background (face-background 'default))
-  (set-face-attribute 'whitespace-trailing frame :foreground "red1" :background "yellow1")
+  (set-face-attribute 'whitespace-trailing frame :foreground "NavajoWhite" :background (face-background 'default))
   (set-face-attribute 'whitespace-space frame :foreground whitespace-color :background (face-background 'default))
   (set-face-attribute 'whitespace-newline frame :foreground whitespace-color :background (face-background 'default))
   (set-face-attribute 'whitespace-tab frame :foreground whitespace-color :background (face-background 'default)))
