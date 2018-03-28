@@ -114,6 +114,9 @@
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 
 
+;; don't include related messages in search results
+(setq mu4e-headers-include-related nil)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Compose messages in new frame ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
