@@ -1,3 +1,9 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 (install-package 'ox-pandoc)
 
 ;;;;; Auto-fill-mode in org-mode
@@ -13,3 +19,4 @@
 (evil-org-set-key-theme '(navigation insert textobjects additional))
 
 (provide 'init-org)
+;;; init-org.el ends here

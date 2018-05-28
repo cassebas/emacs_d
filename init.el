@@ -1,3 +1,8 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
 (require 'package)
 
 (add-to-list

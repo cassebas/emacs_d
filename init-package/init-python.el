@@ -1,3 +1,8 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
 (install-package 'anaconda-mode)
 (install-package 'pyenv-mode)
 (add-hook 'python-mode-hook 'anaconda-mode)
@@ -30,3 +35,4 @@
   '(add-to-list 'company-backends 'company-anaconda))
 
 (provide 'init-python)
+;;; init-python.el ends here

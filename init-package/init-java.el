@@ -1,4 +1,11 @@
-;;;; Java customization
+;;; package --- Summary
+
+;; Java customization
+
+;;; Commentary:
+
+;;; Code:
+
 
 ;; ;;;;; Default tabs :(
 (add-hook 'java-mode-hook (lambda ()
@@ -12,3 +19,4 @@
 (add-hook 'java-mode-hook 'linum-mode)
 
 (provide 'init-java)
+;;; init-java.el ends here

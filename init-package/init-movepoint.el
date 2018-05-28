@@ -1,3 +1,8 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
 (install-package 'ace-window)
 (require 'ace-window)
 
@@ -5,3 +10,4 @@
 ;(global-set-key (kbd "M-p") 'ace-window)
 
 (provide 'init-movepoint)
+;;; init-movepoint.el ends here

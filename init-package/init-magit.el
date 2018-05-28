@@ -1,3 +1,9 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 ;;; Custom key bind for much used magit-status
 (global-set-key (kbd "C-c g s") 'magit-status)
 
@@ -12,3 +18,4 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 
 (provide 'init-magit)
+;;; init-magit.el ends here

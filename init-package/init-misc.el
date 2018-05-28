@@ -1,4 +1,9 @@
-;;; Customizations of various packages
+;;; package --- Summary
+;; Customizations of various packages
+
+;;; Commentary:
+
+;;; Code:
 
 ;;; install color theme
 (install-package 'spacemacs-theme)
@@ -138,3 +143,4 @@
 
 
 (provide 'init-misc)
+;;; init-misc.el ends here

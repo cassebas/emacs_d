@@ -1,3 +1,8 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
 (require 'cc-mode)
 
 ;; Available C style:
@@ -115,3 +120,4 @@
   (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
 (provide 'init-c_cpp)
+;;; init-c_cpp.el ends here

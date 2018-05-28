@@ -1,4 +1,10 @@
+;;; package --- Summary
+
 ;; configuration for notmuch
+
+;;; Commentary:
+
+;;; Code:
 
 (autoload 'notmuch "notmuch" "notmuch mail" t)
 
@@ -16,3 +22,4 @@
 (evil-set-initial-state 'notmuch-show-mode 'emacs)
 
 (provide 'init-mail)
+;;; init-notmuch.el ends here

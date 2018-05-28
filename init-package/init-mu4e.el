@@ -1,6 +1,11 @@
+;;; package --- Summary
 ;; configuration for mu4e
+
+;;; Commentary:
 ;; taken from
 ;; http://www.djcbsoftware.nl/code/mu/mu4e/Longer-configuration.html
+
+;;; Code:
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 (require 'mu4e)
 ;; use mu4e with evil key bindings
@@ -181,3 +186,4 @@
 (setq mu4e-change-filenames-when-moving t)
 
 (provide 'init-mu4e)
+;;; init-mu4e.el ends here
