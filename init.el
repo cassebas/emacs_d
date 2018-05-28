@@ -57,5 +57,6 @@
 (require 'init-mu4e)
 (require 'init-projectile)
 (require 'init-python)
+(require 'init-vhdl)
 (require 'init-misc)
 (require 'init-org)
