@@ -13,9 +13,6 @@
                                   tab-width 4
                                   indent-tabs-mode t)))
 
-(add-hook 'java-mode-hook (lambda ()
-                            (setq global-hl-line-mode nil)))
-
 (add-hook 'java-mode-hook 'linum-mode)
 
 (provide 'init-java)
