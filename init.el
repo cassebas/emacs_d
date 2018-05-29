@@ -60,3 +60,4 @@
 (require 'init-vhdl)
 (require 'init-misc)
 (require 'init-org)
+;;; init.el ends here
