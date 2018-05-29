@@ -34,5 +34,9 @@
 (eval-after-load "company"
   '(add-to-list 'company-backends 'company-anaconda))
 
+;; Make sure that python can execute run the python debugger
+;; without the pdb executable
+(setq gud-pdb-command-name "python -m pdb")
+
 (provide 'init-python)
 ;;; init-python.el ends here
