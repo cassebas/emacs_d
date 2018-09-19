@@ -142,5 +142,9 @@
 (add-hook 'text-mode-hook 'flyspell-mode)
 
 
+;;; have default spelling dictionary 'dutch'
+(setq ispell-dictionary "dutch")
+
+ 
 (provide 'init-misc)
 ;;; init-misc.el ends here
