@@ -5,59 +5,79 @@
 ;;; Code:
 (require 'package)
 
-(add-to-list
+(customize-set-variable
  'package-archives
- '("gnu" . "http://elpa.gnu.org/packages/")
- t)
-
-(add-to-list
- 'package-archives
- '("melpa" . "https://melpa.org/packages/")
- t)
-
+ '(("melpa" . "https://melpa.org/packages/")
+   ("gnu" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
+
+;; https://github.com/jwiegley/use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Some global configurations ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 (add-to-list 'load-path (expand-file-name "init-package" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "local" user-emacs-directory))
 
-(defvar default-packages '(magit
-                           evil-magit
-                           company
-                           company-c-headers
-                           flycheck
-                           undo-tree))
 
-(defun install-default-packages()
-  "Install required packages"
-  (unless package-archive-contents
-    (package-refresh-contents))
-  (dolist (package default-packages)
-    (unless(package-installed-p package)
-      (package-install package))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Some global packages, always enabled ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(install-default-packages)
+;; Syntax checking.
+;; http://www.flycheck.org/
+(use-package flycheck
+  :ensure t
+  :config
+  (global-flycheck-mode))
 
-(defun install-package (package)
-  "Install given package"
-  (unless(package-installed-p package)
-    (package-install package)))
+;; Auto-completions.
+;; https://company-mode.github.io/
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode))
 
-(require 'init-movepoint)
+;; Git
+;; https://github.com/magit/magit
+;; (global-set-key (kbd "C-c g s") 'magit-status)
+(use-package magit
+  :ensure t
+  :bind (("C-c g s" . magit-status)))
+
+(use-package undo-tree
+  :ensure t)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Some specific packages, with specific configs ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;(require 'init-movepoint)
 (require 'init-c_cpp)
-(require 'init-java)
+;(require 'init-java)
 (require 'init-evil)
-(require 'init-ess)
-(require 'init-haskell)
-(require 'init-helm)
-(require 'init-helm-gtags)
-(require 'init-latex)
-(require 'init-magit)
-(require 'init-mu4e)
-(require 'init-projectile)
-(require 'init-python)
-(require 'init-vhdl)
-(require 'init-misc)
-(require 'init-org)
+;(require 'init-ess)
+;(require 'init-haskell)
+;(require 'init-helm)
+;(require 'init-helm-gtags)
+;(require 'init-latex)
+;(require 'init-magit)
+;(require 'init-mu4e)
+;(require 'init-projectile)
+;(require 'init-python)
+;(require 'init-vhdl)
+;(require 'init-misc)
+;(require 'init-org)
+
 ;;; init.el ends here

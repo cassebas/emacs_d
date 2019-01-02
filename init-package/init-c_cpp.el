@@ -21,33 +21,14 @@
 ;; But use 4 spaces for indentation instead of 5
 (setq-default c-basic-offset 4)
 
-(add-hook 'after-init-hook 'global-company-mode)
-
-
-;; ;;;;; Fill-column indicator in c-mode
-;; (add-hook 'c-mode-hook (lambda () (fci-mode t)))
-;; (add-hook 'c++-mode-hook (lambda () (fci-mode t)))
-
 ;;;;; Turn on line numbers in c-mode
 (add-hook 'c-mode-hook (lambda () (linum-mode 1)))
 (add-hook 'c++-mode-hook (lambda () (linum-mode 1)))
 
-;;;;; flycheck
-(install-package 'flycheck)
-(global-flycheck-mode)
 
-;;;;; yasnippet
-;; (install-package 'yasnippet)
-;; (require 'yasnippet)
-;; (yas-global-mode t)
-
-;;;;;;;;;;;;;;;;;;;;;;;
-;;; Configure rtags ;;;
-;;;;;;;;;;;;;;;;;;;;;;;
-
-;(install-package 'auto-complete)
-(install-package 'company)
-;(install-package 'company-c-headers)
+;;;;;;;;;;;;;;;;;;;;;
+;; Configure rtags ;;
+;;;;;;;;;;;;;;;;;;;;;
 
 ;; rtags.el is already installed in /usr/share/emacs/site-lisp/rtags
 ;; use the rtags.el from the AUR installed version, instead of the MELPA
@@ -56,12 +37,12 @@
 (setq load-path (cons "/usr/share/emacs/site-lisp/rtags" load-path))
 (require 'rtags)
 (require 'company-rtags)
-(require 'helm-rtags)
 (require 'flycheck-rtags)
+(use-package flycheck-rtags
+  :ensure t)
+;(require 'helm-rtags)
+;(setq rtags-use-helm t)
 
-(setq rtags-use-helm t)
-
-;(require 'company)
 ;(require 'company-c-headers)
 
 ;;; maybe start the rdm service [now is a systemd unit]
@@ -87,37 +68,20 @@
 (define-key c-mode-base-map (kbd "M-n") (function rtags-next-match))
 (define-key c-mode-base-map (kbd "M-p") (function rtags-previous-match))
 
-;;;;; Irony mode for code completion
-(install-package 'irony)
-(install-package 'company-irony)
-
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'c++-mode-hook 'irony-mode)
-
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-
-(install-package 'company-irony-c-headers)
-(require 'company-irony-c-headers)
 
 (setq company-backends (delete 'company-semantic company-backends))
 (eval-after-load 'company
   '(add-to-list
-    'company-backends '(company-irony-c-headers company-irony company-rtags)))
+    'company-backends '(company-rtags)))
 
 (define-key c-mode-map [(tab)] 'company-complete)
 (define-key c++-mode-map [(tab)] 'company-complete)
 
-;; integrate irony with flycheck
-(install-package 'flycheck-irony)
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
-
-(with-eval-after-load 'company
-  (define-key company-active-map (kbd "M-n") nil)
-  (define-key company-active-map (kbd "M-p") nil)
-  (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous))
+;; (with-eval-after-load 'company
+;;   (define-key company-active-map (kbd "M-n") nil)
+;;   (define-key company-active-map (kbd "M-p") nil)
+;;   (define-key company-active-map (kbd "C-n") #'company-select-next)
+;;   (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
 (provide 'init-c_cpp)
 ;;; init-c_cpp.el ends here
