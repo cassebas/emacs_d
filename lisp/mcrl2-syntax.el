@@ -1,3 +1,9 @@
+;;; package --- summary
+
+;;; Commentary:
+
+;;; Code:
+
 (require 'generic-x)
 
 (define-generic-mode
@@ -19,4 +25,4 @@
 )
 
 (provide 'mcrl2-syntax)
-
+;;; mcrl2-syntax ends here

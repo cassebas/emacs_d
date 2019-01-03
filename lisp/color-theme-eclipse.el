@@ -1,3 +1,9 @@
+;;; package --- summary
+
+;;; Commentary:
+
+;;; Code:
+
 ;;; color-theme-eclipse.el --- Eclipse color theme for GNU Emacs.
 
 ;; Copyright (C) 2010 Kentaro Takahashi <takaken@bigfoot.com>

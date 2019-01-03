@@ -63,13 +63,13 @@
 ;; Some specific packages, with specific configs ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;(require 'init-movepoint)
-(require 'init-c_cpp)
-;(require 'init-java)
+(require 'init-helm)
 (require 'init-evil)
+(require 'init-c_cpp)
+;(require 'init-movepoint)
+;(require 'init-java)
 ;(require 'init-ess)
 ;(require 'init-haskell)
-;(require 'init-helm)
 ;(require 'init-helm-gtags)
 ;(require 'init-latex)
 ;(require 'init-magit)

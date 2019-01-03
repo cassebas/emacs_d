@@ -49,6 +49,9 @@
   :config
   (evil-collection-init))
 
+(use-package ace-window
+  :ensure t)
+
 (use-package evil-leader
   :after evil
   :ensure t
@@ -61,7 +64,7 @@
       "b" 'switch-to-buffer
       "g" 'magit-status
       "k" 'kill-buffer
-      "a" 'helm-ag
+      "s" 'helm-ag
       "p" 'projectile-find-file
       "m" 'mu4e
       "x" 'helm-M-x)))
