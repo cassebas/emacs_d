@@ -26,8 +26,7 @@
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
-(add-to-list 'load-path (expand-file-name "init-package" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "local" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -79,5 +78,13 @@
 ;(require 'init-vhdl)
 ;(require 'init-misc)
 ;(require 'init-org)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; --- *Maybe* enable these configs --- ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; (require 'mcrl2-syntax)
+; (require 'color-theme-eclipse)
+
 
 ;;; init.el ends here
