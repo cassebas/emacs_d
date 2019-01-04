@@ -57,7 +57,8 @@
   :ensure t
   :config
   (progn
-    (evil-leader/set-leader "<SPC")
+    (global-evil-leader-mode)
+    (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key
       "SPC" 'ace-window
       "f" 'helm-find-files
