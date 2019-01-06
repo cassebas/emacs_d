@@ -9,6 +9,7 @@
  'package-archives
  '(("melpa" . "https://melpa.org/packages/")
    ("gnu" . "https://elpa.gnu.org/packages/")))
+
 (package-initialize)
 
 ;; https://github.com/jwiegley/use-package
@@ -23,6 +24,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Some global configurations ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; (if (daemonp)
+;;   (setq use-package-always-demand t))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
@@ -65,18 +69,17 @@
 (require 'init-helm)
 (require 'init-evil)
 (require 'init-c_cpp)
-;(require 'init-movepoint)
+(require 'init-haskell)
+(require 'init-misc)
+
 ;(require 'init-java)
 ;(require 'init-ess)
-;(require 'init-haskell)
-;(require 'init-helm-gtags)
 ;(require 'init-latex)
 ;(require 'init-magit)
 ;(require 'init-mu4e)
 ;(require 'init-projectile)
 ;(require 'init-python)
 ;(require 'init-vhdl)
-;(require 'init-misc)
 ;(require 'init-org)
 
 
