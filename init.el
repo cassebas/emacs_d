@@ -18,6 +18,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(if (daemonp)
+    (setq use-package-always-demand t))
+
 (eval-when-compile
   (require 'use-package))
 
@@ -25,9 +28,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Some global configurations ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; (if (daemonp)
-;;   (setq use-package-always-demand t))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 

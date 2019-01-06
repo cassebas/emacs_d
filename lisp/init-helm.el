@@ -25,6 +25,9 @@
     (global-set-key (kbd "C-c h") 'helm-command-prefix)
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-z")  'helm-select-action)
+    
+    ; rebind tab to run persistent action
+    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 
     ; open helm buffer inside current window, not occupy whole other window
     (setq helm-split-window-in-side-p t)

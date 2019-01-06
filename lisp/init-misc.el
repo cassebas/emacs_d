@@ -23,9 +23,10 @@
 
 (add-to-list 'custom-theme-load-path
              "/home/caspar/.emacs_environments/emacs-color-theme-solarized")
-(load-theme 'solarized t)
-(setq solarized-visibility "low")
+(setq solarized-visibility "normal")
+(setq solarized-contrast "high")
 (setq solarized-termcolors 256)
+(load-theme 'solarized t)
 
 ;; font
 ;; The following will make the font appear correctly in daemon mode

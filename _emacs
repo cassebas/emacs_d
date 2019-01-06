@@ -22,12 +22,6 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (let* ((user-init-dir-default
         (file-name-as-directory (concat "~" init-file-user "/.emacs.d")))
        (user-init-dir
@@ -50,6 +44,7 @@
     (load (expand-file-name "init" user-init-dir-default) t t)))
 
 (setq package-user-dir (concat user-emacs-directory "elpa"))
+(package-initialize)
 
 (provide '.emacs)
 ;;; .emacs ends here
