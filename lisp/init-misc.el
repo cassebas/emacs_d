@@ -29,7 +29,7 @@
 
 ;; font
 ;; The following will make the font appear correctly in daemon mode
-(add-to-list 'default-frame-alist '(font . "Inconsolata-14"))
+(add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; make sure emacsclient in daemon mode correctly uses color theme ;;

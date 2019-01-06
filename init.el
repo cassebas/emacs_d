@@ -3,6 +3,7 @@
 ;;; Commentary:
 
 ;;; Code:
+(setq package-user-dir (concat user-emacs-directory "elpa"))
 (require 'package)
 
 (customize-set-variable
