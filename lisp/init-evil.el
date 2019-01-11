@@ -49,6 +49,10 @@
   :config
   (evil-collection-init))
 
+(use-package evil-magit
+  :after evil-collection
+  :ensure t)
+
 (use-package ace-window
   :ensure t)
 

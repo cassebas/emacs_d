@@ -54,10 +54,8 @@
 
 ;; Git
 ;; https://github.com/magit/magit
-;; (global-set-key (kbd "C-c g s") 'magit-status)
 (use-package magit
-  :ensure t
-  :bind (("C-c g s" . magit-status)))
+  :ensure t)
 
 (use-package undo-tree
   :ensure t)

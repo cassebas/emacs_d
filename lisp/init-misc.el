@@ -10,27 +10,15 @@
 (tool-bar-mode -1)
 
 ;;; install color theme
-;; (use-package color-theme)
+(use-package color-theme)
 
-;; (use-package color-theme-solarized
-;;   :defer t
-;;   :ensure t
-;;   :config
-;;   (progn
-;;     (setq solarized-visibility "high")
-;;     (setq solarized-termcolors 256)
-;;     (load-theme 'solarized)))
-
-(add-to-list 'custom-theme-load-path
-             "/home/caspar/.emacs_environments/emacs-color-theme-solarized")
-(setq solarized-visibility "normal")
-(setq solarized-contrast "high")
-(setq solarized-termcolors 256)
-(load-theme 'solarized t)
+(use-package color-theme-solarized
+  :ensure t
+  :init (load-theme 'solarized t))
 
 ;; font
 ;; The following will make the font appear correctly in daemon mode
-(add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
+(add-to-list 'default-frame-alist '(font . "Inconsolata-14"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -88,6 +76,29 @@
 
 ;;; also show column number in the status bar
 (setq column-number-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Powerline and smart mode line ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package powerline)
+
+(use-package smart-mode-line
+  :ensure t
+  :config
+  (progn
+    (setq sml/no-confirm-load-theme t)
+    (setq sml/theme 'respectful)
+    (sml/setup)
+    (sml/apply-theme 'respectful)))
+
+;; (use-package smart-mode-line-powerline-theme
+;;   :ensure t
+;;   :after powerline
+;;   :after smart-mode-line
+;;   :config
+;;   (progn
+;;     (sml/setup)
+;;     (sml/apply-theme 'respectful)))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;;;; fill column indicator      ;;;;;
