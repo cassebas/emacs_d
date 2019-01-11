@@ -77,6 +77,9 @@
 ;;; also show column number in the status bar
 (setq column-number-mode t)
 
+;; set appearance of a tab that is represented by 4 spaces
+(setq-default tab-width 4)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Powerline and smart mode line ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -119,9 +122,6 @@
 
 ;; ;; use space to indent by default
 ;; (setq-default indent-tabs-mode nil)
-
-;; ;; set appearance of a tab that is represented by 4 spaces
-;; (setq-default tab-width 4)
 
 ;; ;;; Turn on visual lines with word wrap, rebinding C-a and C-e
 ;; (global-visual-line-mode 1)
