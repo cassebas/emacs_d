@@ -32,12 +32,24 @@
 ;; The following will make the font appear correctly in daemon mode
 (add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Emacs should backup files in a special directory, not visited file directory ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+(setq backup-by-copying t)
+(setq delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; make sure emacsclient in daemon mode correctly uses color theme ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'after-make-frame-functions
           (lambda (frame)
-            (let ((mode (if (display-graphic-p frame) 'light 'dark)))
+            (let ((mode (if (display-graphic-p frame) 'dark 'dark)))
               (set-frame-parameter frame 'background-mode mode)
               (set-terminal-parameter frame 'background-mode mode))
             (enable-theme 'solarized)))
