@@ -12,6 +12,15 @@
 	(append '((company-capf company-dabbrev-code))
 	 company-backends))))
 
+;; (add-hook 'haskell-mode-hook #'flycheck-haskell-setup)
+
+(custom-set-variables
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-auto-import-loaded-modules t)
+ '(flycheck-haskell-stack-ghc-executable "/home/caspar/.local/bin/stack")
+ '(flycheck-haskell-ghc-executable "/home/caspar/.cabal/bin/clash")
+ '(flycheck-ghc-args '("-v")))
+
 ;; (install-package 'ghc)
 ;; (install-package 'company-ghc)
 ;; (install-package 'shm)
