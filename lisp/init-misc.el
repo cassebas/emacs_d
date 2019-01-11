@@ -76,6 +76,19 @@
 ;;   (set-face-attribute 'whitespace-newline frame :foreground whitespace-color :background (face-background 'default))
 ;;   (set-face-attribute 'whitespace-tab frame :foreground whitespace-color :background (face-background 'default)))
 
+
+;;; Prevent startup screen
+(setq inhibit-splash-screen t)
+
+;;; Always highlight parentheses
+(show-paren-mode t)
+
+;;; Use electric to automatically insert closing parentheses, brackets and such
+(electric-pair-mode t)
+
+;;; also show column number in the status bar
+(setq column-number-mode t)
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;;;; fill column indicator      ;;;;;
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -89,16 +102,6 @@
 ;;          (not (eq major-mode 'dired-mode)))
 ;;         (fci-mode t))))
 ;; (setq fci-rule-column 80)
-
-
-;;; Prevent startup screen
-(setq inhibit-splash-screen t)
-
-;; ;;; Always highlight parentheses
-;; (show-paren-mode t)
-
-;; ;;; Use electric to automatically insert closing parentheses, brackets and such
-;; (electric-pair-mode t)
 
 ;; ;;; Higlight current line
 ;; (setq global-hl-line-mode nil)
@@ -119,9 +122,6 @@
 
 ;; ;;; for writing latex
 ;; (install-package 'auctex)
-
-;; ;;; also show column number in the status bar
-;; (setq column-number-mode t)
 
 
 ;; ;; Smart mode line
