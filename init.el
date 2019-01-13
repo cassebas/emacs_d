@@ -69,6 +69,7 @@
 (require 'init-evil)
 (require 'init-c_cpp)
 (require 'init-haskell)
+(require 'init-python)
 (require 'init-misc)
 
 ;(require 'init-java)
@@ -77,7 +78,6 @@
 ;(require 'init-magit)
 ;(require 'init-mu4e)
 ;(require 'init-projectile)
-;(require 'init-python)
 ;(require 'init-vhdl)
 ;(require 'init-org)
 
