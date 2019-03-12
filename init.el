@@ -72,6 +72,7 @@
 (require 'init-python)
 (require 'init-misc)
 (require 'init-org)
+(require 'init-treemacs)
 
 ;(require 'init-java)
 ;(require 'init-ess)
