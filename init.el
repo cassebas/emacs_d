@@ -71,6 +71,7 @@
 (require 'init-haskell)
 (require 'init-python)
 (require 'init-misc)
+(require 'init-org)
 
 ;(require 'init-java)
 ;(require 'init-ess)
@@ -79,7 +80,6 @@
 ;(require 'init-mu4e)
 ;(require 'init-projectile)
 ;(require 'init-vhdl)
-;(require 'init-org)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
