@@ -7,9 +7,8 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package ag
-  :ensure t
-  :commands (ag ag-regexp ag-project))
+(use-package helm-ag
+  :ensure t)
 
 (use-package helm
   :ensure t
