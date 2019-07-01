@@ -42,6 +42,13 @@
               (set-terminal-parameter frame 'background-mode mode))
             (enable-theme 'solarized)))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; have default spelling dictionary 'english'                      ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq ispell-dictionary "english")
+
+
 ;; ;;; Configure whitespaces
 ;; (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark trailing)))
 ;; (setq whitespace-display-mappings
@@ -172,9 +179,6 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (add-hook 'text-mode-hook 'flyspell-mode)
 
-
-;; ;;; have default spelling dictionary 'dutch'
-;; (setq ispell-dictionary "dutch")
 
 
 (provide 'init-misc)
