@@ -9,15 +9,30 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-;;; install color theme
-(use-package color-theme)
 
-(use-package color-theme-solarized
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Color theme and easy switching between dark/light               ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package solarized-theme
   :ensure t
-  :init (load-theme 'solarized t))
+  :init
+  (load-theme 'solarized-light t))
 
-;; font
-;; The following will make the font appear correctly in daemon mode
+;; (use-package heaven-and-hell
+;;   :ensure t
+;;   :init
+;;   (setq heaven-and-hell-theme-type 'dark) ;; Omit to use light by default
+;;   (setq heaven-and-hell-themes
+;;         '((light . solarized-light)
+;;           (dark . solarized-dark))) ;; Themes can be the list: (dark . (tsdh-dark wombat))
+;;   :hook (after-init . heaven-and-hell-init-hook)
+;;   :bind (("C-c <f6>" . heaven-and-hell-load-default-theme)
+;;          ("<f6>" . heaven-and-hell-toggle-theme)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Font (use add-to-list to make it appear in daemon mode)         ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'default-frame-alist '(font . "Inconsolata-14"))
 
 
@@ -30,17 +45,6 @@
       kept-new-versions 6
       kept-old-versions 2
       version-control t)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; make sure emacsclient in daemon mode correctly uses color theme ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (let ((mode (if (display-graphic-p frame) 'dark 'dark)))
-              (set-frame-parameter frame 'background-mode mode)
-              (set-terminal-parameter frame 'background-mode mode))
-            (enable-theme 'solarized)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
