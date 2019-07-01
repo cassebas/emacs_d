@@ -73,10 +73,10 @@
 (require 'init-misc)
 (require 'init-org)
 (require 'init-treemacs)
+(require 'init-latex)
 
 ;(require 'init-java)
 ;(require 'init-ess)
-;(require 'init-latex)
 ;(require 'init-magit)
 ;(require 'init-mu4e)
 ;(require 'init-projectile)
