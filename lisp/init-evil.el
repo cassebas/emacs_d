@@ -66,7 +66,7 @@
     (evil-leader/set-key
       "SPC" 'ace-window
       "f" 'helm-find-files
-      "b" 'switch-to-buffer
+      "b" 'helm-buffers-list
       "g" 'magit-status
       "k" 'kill-buffer
       "s" 'helm-ag
