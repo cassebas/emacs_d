@@ -53,27 +53,29 @@
 (setq ispell-dictionary "english")
 
 
-;; ;;; Configure whitespaces
-;; (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark trailing)))
-;; (setq whitespace-display-mappings
-;;   ;; all numbers are Unicode codepoint in decimal. ⁖ (insert-char 182 1)
-;;   '(
-;;     (space-mark 32 [183] [46])   ; 32 SPACE 「 」, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
-;;     (newline-mark 10 [182 10])   ; 10 LINE FEED
-;;     (tab-mark 9 [9655 9] [92 9]) ; 9 TAB, 9655 WHITE RIGHT-POINTING TRIANGLE 「▷」
-;;     ))
-;; (global-whitespace-mode 1)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Configure whitespaces                                           ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark trailing)))
+(setq whitespace-display-mappings
+  ;; all numbers are Unicode codepoint in decimal. ⁖ (insert-char 182 1)
+  '(
+    (space-mark 32 [183] [46])   ; 32 SPACE 「 」, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
+    (newline-mark 10 [182 10])   ; 10 LINE FEED
+    (tab-mark 9 [9655 9] [92 9]) ; 9 TAB, 9655 WHITE RIGHT-POINTING TRIANGLE 「▷」
+    ))
+(global-whitespace-mode 1)
 
-;; ;;; always show trailing whitespaces
-;; (setq show-trailing-whitespace t)
+(defun my-whitespace-settings (frame whitespace-color)
+  " Correct some minor details for improvement of font-lock"
+  (set-face-attribute 'font-lock-comment-face frame :background (face-background 'default))
+  (set-face-attribute 'whitespace-trailing frame :foreground "PaleGreen" :background "gainsboro")
+  (set-face-attribute 'whitespace-space frame :foreground whitespace-color :background (face-background 'default))
+  (set-face-attribute 'whitespace-newline frame :foreground whitespace-color :background (face-background 'default))
+  (set-face-attribute 'whitespace-tab frame :foreground whitespace-color :background (face-background 'default)))
 
-;; (defun my-whitespace-settings (frame whitespace-color)
-;;   " Correct some minor details for improvement of font-lock"
-;;   (set-face-attribute 'font-lock-comment-face frame :background (face-background 'default))
-;;   (set-face-attribute 'whitespace-trailing frame :foreground "NavajoWhite" :background (face-background 'default))
-;;   (set-face-attribute 'whitespace-space frame :foreground whitespace-color :background (face-background 'default))
-;;   (set-face-attribute 'whitespace-newline frame :foreground whitespace-color :background (face-background 'default))
-;;   (set-face-attribute 'whitespace-tab frame :foreground whitespace-color :background (face-background 'default)))
+;; Let the foreground whitespace markers have color Gainsboro (kinda darkish white)
+(my-whitespace-settings nil "gainsboro")
 
 
 ;;; Prevent startup screen
@@ -94,7 +96,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Powerline and smart mode line ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package powerline)
+;; (use-package powerline)
 
 (use-package smart-mode-line
   :ensure t
