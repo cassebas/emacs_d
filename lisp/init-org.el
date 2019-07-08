@@ -32,6 +32,9 @@
 ;;;;; Word wrap, yes.
 (add-hook 'org-mode-hook (lambda () (setq-default word-wrap t)))
 
+;;;;; Enable spell checking for editing org files.
+(add-hook 'LaTeX-mode-hook (lambda () (flyspell-mode t)))
+
 ;;; Another org-mode exporter via pandoc
 (use-package ox-pandoc
   :ensure t)
