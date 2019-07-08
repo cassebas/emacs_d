@@ -105,18 +105,16 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Powerline and smart mode line ;;
+;; Smart mode line ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (use-package powerline)
-
 (use-package smart-mode-line
   :ensure t
   :config
-  (progn
-    (setq sml/no-confirm-load-theme t)
-    (setq sml/theme 'respectful)
-    (sml/setup)
-    (sml/apply-theme 'respectful)))
+  (setq sml/no-confirm-load-theme t)
+  (sml/setup)
+  (sml/apply-theme 'respectful)
+  )
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Turn on line numbers for elisp files ;;
@@ -126,14 +124,6 @@
 ;; their own configs.
 (add-hook 'emacs-lisp-mode-hook (lambda () (linum-mode t)))
 
-;; (use-package smart-mode-line-powerline-theme
-;;   :ensure t
-;;   :after powerline
-;;   :after smart-mode-line
-;;   :config
-;;   (progn
-;;     (sml/setup)
-;;     (sml/apply-theme 'respectful)))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;;;; fill column indicator      ;;;;;
