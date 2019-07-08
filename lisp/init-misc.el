@@ -90,8 +90,17 @@
 ;;; also show column number in the status bar
 (setq column-number-mode t)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Configure tabs                ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; set appearance of a tab that is represented by 4 spaces
 (setq-default tab-width 4)
+
+;; But use space to indent by default
+(setq-default indent-tabs-mode nil)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Powerline and smart mode line ;;
@@ -132,9 +141,6 @@
 
 ;; ;;; Higlight current line
 ;; (setq global-hl-line-mode nil)
-
-;; ;; use space to indent by default
-;; (setq-default indent-tabs-mode nil)
 
 ;; ;;; Turn on visual lines with word wrap, rebinding C-a and C-e
 ;; (global-visual-line-mode 1)
