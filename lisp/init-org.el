@@ -4,27 +4,6 @@
 
 ;;; Code:
 
-;; Get keybindings from evil-org-mode
-;;   see https://github.com/Somelauw/evil-org-mode
-;;
-;; Set org-special-ctrl-a/e to t to make org-beginning-of-line and
-;; org-end-of-line ignore leading stars or tags on headings. Repeat to
-;; toggle. By default it’s set to nil.
-(use-package evil-org
-  :ensure t
-  :after org
-  :config
-  (progn
-	(setq-default org-special-ctrl-a/e t)
-	(add-hook 'org-mode-hook 'evil-org-mode)
-	(add-hook 'evil-org-mode-hook
-			  (lambda ()
-				(evil-org-set-key-theme
-				 '(navigation insert textobjects additional)))))
-  )
-
-;;;;; No auto-fill-mode in org-mode
-(add-hook 'org-mode-hook (lambda () (auto-fill-mode nil)))
 ;;;;; Do visual-fill-mode in org-mode
 (add-hook 'org-mode-hook (lambda () (visual-line-mode 1)))
 
