@@ -118,6 +118,14 @@
     (sml/setup)
     (sml/apply-theme 'respectful)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Turn on line numbers for elisp files ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Add hook for elisp files, the other programming languages are handled in
+;; their own configs.
+(add-hook 'emacs-lisp-mode-hook (lambda () (linum-mode t)))
+
 ;; (use-package smart-mode-line-powerline-theme
 ;;   :ensure t
 ;;   :after powerline
@@ -146,11 +154,6 @@
 
 ;; ;;; Turn on visual lines with word wrap, rebinding C-a and C-e
 ;; (global-visual-line-mode 1)
-
-;; ;;; Turn on line numbers
-;; ;; 2016-12-11 commented global linum mode, since it
-;; ;; disturbes some modes, e.g. mu4e (for mail)
-;; ;(global-linum-mode 1)
 
 ;; ;;; for writing latex
 ;; (install-package 'auctex)
