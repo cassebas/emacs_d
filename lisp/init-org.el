@@ -25,15 +25,20 @@
 
 ;;;;; No auto-fill-mode in org-mode
 (add-hook 'org-mode-hook (lambda () (auto-fill-mode nil)))
+;;;;; Do visual-fill-mode in org-mode
+(add-hook 'org-mode-hook (lambda () (visual-line-mode 1)))
+
+;;;;; And no auto-fill-mode in org-mode
+(add-hook 'org-mode-hook (lambda () (auto-fill-mode -1)))
+
+;;;;; But with word wrap, yeah.
+(add-hook 'org-mode-hook (lambda () (setq-default word-wrap 1)))
 
 ;;;;; Turn on line numbers in org-mode
 (add-hook 'org-mode-hook (lambda () (linum-mode 1)))
 
-;;;;; Word wrap, yes.
-(add-hook 'org-mode-hook (lambda () (setq-default word-wrap t)))
-
 ;;;;; Enable spell checking for editing org files.
-(add-hook 'LaTeX-mode-hook (lambda () (flyspell-mode t)))
+(add-hook 'LaTeX-mode-hook (lambda () (flyspell-mode 1)))
 
 ;;; Another org-mode exporter via pandoc
 (use-package ox-pandoc
