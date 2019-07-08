@@ -23,11 +23,14 @@
 				 '(navigation insert textobjects additional)))))
   )
 
-;;;;; Auto-fill-mode in org-mode
-(add-hook 'org-mode-hook (lambda () (auto-fill-mode 1)))
+;;;;; No auto-fill-mode in org-mode
+(add-hook 'org-mode-hook (lambda () (auto-fill-mode nil)))
 
 ;;;;; Turn on line numbers in org-mode
 (add-hook 'org-mode-hook (lambda () (linum-mode 1)))
+
+;;;;; Word wrap, yes.
+(add-hook 'org-mode-hook (lambda () (setq-default word-wrap t)))
 
 ;;; Another org-mode exporter via pandoc
 (use-package ox-pandoc
