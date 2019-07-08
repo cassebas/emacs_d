@@ -16,6 +16,7 @@
   (progn
     ;;; i like evil but I do want my C-a/C-e back!
     (define-key evil-normal-state-map (kbd "C-a") 'beginning-of-visual-line)
+    (define-key evil-normal-state-map (kbd "^") 'evil-first-non-blank-of-visual-line)
     (define-key evil-motion-state-map (kbd "C-e") 'end-of-visual-line)
     ;;; make movement keys work like they should while using visual-line-mode
     (define-key evil-normal-state-map
