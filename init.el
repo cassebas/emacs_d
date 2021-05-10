@@ -63,6 +63,7 @@
 (require 'init-c_cpp)
 (require 'init-haskell)
 (require 'init-python)
+(require 'init-php)
 (require 'init-misc)
 (require 'init-org)
 (require 'init-treemacs)
