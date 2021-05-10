@@ -50,9 +50,10 @@
   :config
   (evil-collection-init))
 
-(use-package evil-magit
-  :after evil-collection
-  :ensure t)
+;; CT part of evil-collection now(?)
+;; (use-package evil-magit
+;;   :after evil-collection
+;;   :ensure t)
 
 (use-package ace-window
   :ensure t)
