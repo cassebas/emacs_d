@@ -21,6 +21,10 @@
 
 (add-hook 'projectile-after-switch-project-hook 'projectile-pyenv-mode-set)
 
+;; Tell flycheck where to find the flake8 config fiel
+(setq flycheck-flake8rc "/home/caspar/.config/flake8")
+(setq-default flycheck-disabled-checkers '(python-pylint))
+
 ;; Make sure that also when running from a different environment,
 ;; the pyenv path is set.
 (setq exec-path (cons "/home/caspar/.pyenv/shims" exec-path))
