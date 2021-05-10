@@ -46,7 +46,6 @@
 
 (use-package evil-collection
   :after evil
-  :ensure t
   :config
   (evil-collection-init))
 
@@ -55,12 +54,10 @@
 ;;   :after evil-collection
 ;;   :ensure t)
 
-(use-package ace-window
-  :ensure t)
+(use-package ace-window)
 
 (use-package evil-leader
   :after evil
-  :ensure t
   :config
   (progn
     (global-evil-leader-mode)

@@ -3,26 +3,23 @@
 ;;; Commentary:
 
 ;;; Code:
-(setq package-user-dir (concat user-emacs-directory "elpa"))
-(require 'package)
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(customize-set-variable
- 'package-archives
- '(("melpa" . "https://melpa.org/packages/")
-   ("gnu" . "https://elpa.gnu.org/packages/")))
-
-(package-initialize)
-
-;; https://github.com/jwiegley/use-package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(if (daemonp)
-    (setq use-package-always-demand t))
-
-(eval-when-compile
-  (require 'use-package))
+;;;;  Effectively replace use-package with straight-use-package
+;;; https://github.com/raxod502/straight.el/blob/develop/README.md#integration-with-use-package
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -41,24 +38,20 @@
 ;; Syntax checking.
 ;; http://www.flycheck.org/
 (use-package flycheck
-  :ensure t
   :config
   (global-flycheck-mode))
 
 ;; Auto-completions.
 ;; https://company-mode.github.io/
 (use-package company
-  :ensure t
   :config
   (global-company-mode))
 
 ;; Git
 ;; https://github.com/magit/magit
-(use-package magit
-  :ensure t)
+(use-package magit)
 
-(use-package undo-tree
-  :ensure t)
+(use-package undo-tree)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

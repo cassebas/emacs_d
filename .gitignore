@@ -14,3 +14,5 @@ anaconda-mode
 /eshell
 /network-security.data
 /irony/bin/irony-server
+/straight/
+/transient/
