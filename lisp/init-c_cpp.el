@@ -25,6 +25,9 @@
 (add-hook 'c-mode-hook (lambda () (linum-mode 1)))
 (add-hook 'c++-mode-hook (lambda () (linum-mode 1)))
 
+;; ;; For extending code that is indented with tabs...
+;; (add-hook 'c-mode-hook (lambda () (setq indent-tabs-mode t)))
+;; (add-hook 'c++-mode-hook (lambda () (setq indent-tabs-mode t)))
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Configure rtags ;;
