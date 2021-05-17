@@ -13,10 +13,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Color theme and easy switching between dark/light               ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; my-color-theme: ONLY use either solarized-light or solarized-dark
+(setq my-color-theme 'solarized-dark)
+
 (use-package solarized-theme
   :ensure t
   :init
-  (load-theme 'solarized-light t))
+  (load-theme my-color-theme t))
 
 ;; (use-package heaven-and-hell
 ;;   :ensure t
@@ -66,18 +70,28 @@
     ))
 (global-whitespace-mode 1)
 
-(defun my-whitespace-settings (frame whitespace-color)
+(defun my-whitespace-settings (frame whitespace-color trailing-color)
   "Correct some minor details for improvement of font-lock.  FRAME is the current frame or nil, can be nil.  WHITESPACE-COLOR is the color for the foreground of whitespaces."
   ;; for now reversed foreground and background (bug in solarized-emacs package?)
-  (set-face-attribute 'font-lock-comment-face frame :background (face-background 'default))
-  (set-face-attribute 'whitespace-trailing frame :background whitespace-color :foreground "#fff2cd")
-  (set-face-attribute 'whitespace-space frame :foreground whitespace-color :background (face-background 'default))
-  (set-face-attribute 'whitespace-newline frame :foreground whitespace-color :background (face-background 'default))
+  (set-face-attribute
+   'font-lock-comment-face frame :background (face-background 'default))
+  (set-face-attribute
+   'whitespace-trailing frame :background whitespace-color :foreground trailing-color)
+  (set-face-attribute
+   'whitespace-space frame
+   :foreground whitespace-color :background (face-background 'default))
+  (set-face-attribute
+   'whitespace-newline frame :foreground whitespace-color :background (face-background 'default))
   ;; for now reversed foreground and background (bug in solarized-emacs package?)
-  (set-face-attribute 'whitespace-tab frame :background whitespace-color :foreground (face-background 'default)))
+  (set-face-attribute
+   'whitespace-tab frame :background whitespace-color :foreground (face-background 'default)))
 
 ;; Let the foreground whitespace markers have color Gainsboro (kinda darkish white)
-(my-whitespace-settings nil "#e8e8e8")
+;; (my-whitespace-settings nil "#002028" "#A44343")
+(if (eq my-color-theme 'solarized-dark)
+	(my-whitespace-settings nil "#002028" "#a44343")
+	(my-whitespace-settings nil "Gainsboro" "#95ed7b"))
+;; (my-whitespace-settings nil "Gainsboro" "#95ED7B")
 
 
 ;;; Prevent startup screen
