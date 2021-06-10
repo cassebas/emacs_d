@@ -8,12 +8,9 @@
 ;;; Code:
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 (require 'mu4e)
-;; use mu4e with evil key bindings
-(install-package 'evil-mu4e)
-(require 'evil-mu4e)
 
 ;; notify me when new mail arrives
-(install-package 'mu4e-alert)
+(use-package mu4e-alert)
 (mu4e-alert-set-default-style 'libnotify)
 (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
 
@@ -138,6 +135,11 @@
        (:from          .  22)
        (:subject       .  nil))) ;; alternatively, use :thread-subject
 
+;; No threading for me
+(setq mu4e-headers-show-threads nil)
+;; Only show exacts results from the query, not mails from threads
+(setq mu4e-headers-include-related nil)
+
 ;; program to get mail; alternatives are 'fetchmail', 'getmail'
 ;; isync or your own shellscript. called when 'U' is pressed in
 ;; main view.
@@ -158,6 +160,9 @@
 ;; M-x find-function RET message-citation-line-format for docs
 (setq message-citation-line-format "On %a, %b %d %Y at %r, %f wrote:\n")
 (setq message-citation-line-function 'message-insert-formatted-citation-line)
+
+(setq message-cite-function 'message-cite-original)
+(setq mu4e-compose-keep-self-cc nil)
 
 ;; general emacs mail settings; used when composing e-mail
 ;; the non-mu4e-* stuff is inherited from emacs/message-mode
@@ -187,6 +192,14 @@
 
 ;; possible fix for having mu4e work togehter with mbsync
 (setq mu4e-change-filenames-when-moving t)
+
+
+;; Macro for conveniently update the Maildir directories using mbsync
+(defun run-mbsync()
+  (interactive)
+  (shell-command "mbsync -a")
+  (mu4e-update-index))
+(global-set-key (kbd "<f5>") 'run-mbsync)
 
 (provide 'init-mu4e)
 ;;; init-mu4e.el ends here
