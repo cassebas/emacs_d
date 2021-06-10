@@ -210,6 +210,13 @@
 ;; (add-hook 'text-mode-hook 'flyspell-mode)
 
 
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; which-key - display key bindings ;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package which-key
+  :config
+  (which-key-mode 1))
+
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
