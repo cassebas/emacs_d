@@ -15,13 +15,22 @@
 ;; Color theme and easy switching between dark/light               ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; my-color-theme: ONLY use either solarized-light or solarized-dark
-(setq my-color-theme 'solarized-dark)
+(use-package doom-themes
+  :config
+  ;; Global settings (default)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+	    doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-spacegrey t)
+  ;; Corrects (and improves) org-modes's native fontification
+  (doom-themes-org-config))
 
-(use-package solarized-theme
-  :ensure t
-  :init
-  (load-theme my-color-theme t))
+;; my-color-theme: ONLY use either solarized-light or solarized-dark
+;; (setq my-color-theme 'solarized-dark)
+
+;; (use-package solarized-theme
+;;   :ensure t
+;;   :init
+;;   (load-theme my-color-theme t))
 
 ;; (use-package heaven-and-hell
 ;;   :ensure t
@@ -85,16 +94,15 @@
    'whitespace-newline frame :foreground whitespace-color :background (face-background 'default))
   ;; for now reversed foreground and background (bug in solarized-emacs package?)
   (set-face-attribute
-   'whitespace-tab frame :background whitespace-color :foreground (face-background 'default)))
+   'whitespace-tab frame :foreground whitespace-color :background (face-background 'default)))
 
 ;; Let the foreground whitespace markers have color Gainsboro (kinda darkish white)
 ;; (my-whitespace-settings nil "#002028" "#A44343")
-(if (eq my-color-theme 'solarized-dark)
-	(my-whitespace-settings nil "#002028" "#a44343")
-	(my-whitespace-settings nil "Gainsboro" "#95ed7b"))
-;; (my-whitespace-settings nil "Gainsboro" "#95ED7B")
-
-
+;; (if (eq my-color-theme 'solarized-dark)
+;; 	(my-whitespace-settings nil "#002028" "#a44343")
+;; 	(my-whitespace-settings nil "Gainsboro" "#95ed7b"))
+(my-whitespace-settings nil "#21252e" "#a44343")
+ 
 ;;; Prevent startup screen
 (setq inhibit-splash-screen t)
 
