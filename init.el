@@ -68,13 +68,13 @@
 (require 'init-org)
 (require 'init-treemacs)
 (require 'init-latex)
+(require 'init-vhdl)
 
 ;(require 'init-java)
 ;(require 'init-ess)
 ;(require 'init-magit)
 ;(require 'init-mu4e)
 ;(require 'init-projectile)
-;(require 'init-vhdl)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
