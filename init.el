@@ -52,7 +52,7 @@
 (use-package magit)
 
 (use-package undo-tree)
-
+(global-undo-tree-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Some specific packages, with specific configs ;;
