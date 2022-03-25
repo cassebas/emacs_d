@@ -53,6 +53,7 @@
 
 (use-package undo-tree)
 (global-undo-tree-mode)
+(setq undo-tree-visualizer-diff t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Some specific packages, with specific configs ;;
