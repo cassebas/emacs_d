@@ -25,66 +25,15 @@
 (add-hook 'c-mode-hook (lambda () (linum-mode 1)))
 (add-hook 'c++-mode-hook (lambda () (linum-mode 1)))
 
-;; ;; For extending code that is indented with tabs...
-;; (add-hook 'c-mode-hook (lambda () (setq indent-tabs-mode t)))
-;; (add-hook 'c++-mode-hook (lambda () (setq indent-tabs-mode t)))
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
 
-;;;;;;;;;;;;;;;;;;;;;
-;; Configure rtags ;;
-;;;;;;;;;;;;;;;;;;;;;
-
-;; rtags.el is already installed in /usr/share/emacs/site-lisp/rtags
-;; use the rtags.el from the AUR installed version, instead of the MELPA
-;; version (to avoid version conflicts)
-;  NOT: (install-package 'rtags)
-(setq load-path (cons "/usr/share/emacs/site-lisp/rtags" load-path))
-(require 'rtags)
-(require 'company-rtags)
-(require 'flycheck-rtags)
-(use-package flycheck-rtags
-  :ensure t)
-;(require 'helm-rtags)
-;(setq rtags-use-helm t)
-
-;(require 'company-c-headers)
-
-;;; maybe start the rdm service [now is a systemd unit]
-;(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
-;(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
-
-(setq rtags-autostart-diagnostics t)
-(rtags-diagnostics)
-
-(setq rtags-completions-enabled t)
-
-;;; have standard keybindings (prefix for commands is C-c r)
-(rtags-enable-standard-keybindings)
-
-;;; some easy keybindings:
-(define-key c-mode-base-map (kbd "M-.") (function rtags-find-symbol-at-point))
-(define-key c-mode-base-map (kbd "M-,") (function rtags-find-references-at-point))
-(define-key c-mode-base-map (kbd "M-;") (function rtags-find-file))
-(define-key c-mode-base-map (kbd "C-.") (function rtags-find-symbol))
-(define-key c-mode-base-map (kbd "C-,") (function rtags-find-references))
-(define-key c-mode-base-map (kbd "C-<") (function rtags-find-virtuals-at-point))
-(define-key c-mode-base-map (kbd "M-i") (function rtags-imenu))
-(define-key c-mode-base-map (kbd "M-n") (function rtags-next-match))
-(define-key c-mode-base-map (kbd "M-p") (function rtags-previous-match))
-
-
-(setq company-backends (delete 'company-semantic company-backends))
-(eval-after-load 'company
-  '(add-to-list
-    'company-backends '(company-rtags)))
-
-(define-key c-mode-map [(tab)] 'company-complete)
-(define-key c++-mode-map [(tab)] 'company-complete)
-
-;; (with-eval-after-load 'company
-;;   (define-key company-active-map (kbd "M-n") nil)
-;;   (define-key company-active-map (kbd "M-p") nil)
-;;   (define-key company-active-map (kbd "C-n") #'company-select-next)
-;;   (define-key company-active-map (kbd "C-p") #'company-select-previous))
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+  :config
+  (lsp-enable-which-key-integration t))
 
 (provide 'init-c_cpp)
 ;;; init-c_cpp.el ends here
