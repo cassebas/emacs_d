@@ -52,8 +52,8 @@
 (use-package magit)
 
 (use-package undo-tree)
+(setq undo-tree-auto-save-history nil)
 (global-undo-tree-mode)
-(setq undo-tree-visualizer-diff t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Some specific packages, with specific configs ;;
