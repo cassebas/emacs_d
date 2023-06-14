@@ -23,5 +23,7 @@
 (use-package ox-pandoc
   :ensure t)
 
+(customize-set-value 'org-latex-with-hyperref nil)
+
 (provide 'init-org)
 ;;; init-org.el ends here
