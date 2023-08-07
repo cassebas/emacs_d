@@ -55,6 +55,10 @@
 (setq undo-tree-auto-save-history nil)
 (global-undo-tree-mode)
 
+(use-package cmake-mode
+  :ensure t
+  :mode "CMakeLists.txt")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Some specific packages, with specific configs ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
