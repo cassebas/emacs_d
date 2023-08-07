@@ -16,3 +16,5 @@ anaconda-mode
 /irony/bin/irony-server
 /straight/
 /transient/
+/.lsp-session-v1
+/tramp
