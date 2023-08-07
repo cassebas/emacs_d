@@ -11,7 +11,7 @@
 (add-hook 'LaTeX-mode-hook (lambda () (setq TeX-parse-self t)))
 
 ;; Some basic settings
-(add-hook 'LaTeX-mode-hook (lambda () (linum-mode t)))
+(add-hook 'LaTeX-mode-hook (lambda () (line-number-mode t)))
 (add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
 (add-hook 'LaTeX-mode-hook (lambda () (setq-default word-wrap t)))
 (add-hook 'LaTeX-mode-hook (lambda () (flyspell-mode t)))

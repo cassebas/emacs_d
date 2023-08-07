@@ -22,8 +22,8 @@
 (setq-default c-basic-offset 4)
 
 ;;;;; Turn on line numbers in c-mode
-(add-hook 'c-mode-hook (lambda () (linum-mode 1)))
-(add-hook 'c++-mode-hook (lambda () (linum-mode 1)))
+(add-hook 'c-mode-hook (lambda () (line-number-mode 1)))
+(add-hook 'c++-mode-hook (lambda () (line-number-mode 1)))
 
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)

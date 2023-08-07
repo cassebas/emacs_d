@@ -14,7 +14,7 @@
 (add-hook 'org-mode-hook (lambda () (setq-default word-wrap 1)))
 
 ;;;;; Turn on line numbers in org-mode
-(add-hook 'org-mode-hook (lambda () (linum-mode 1)))
+(add-hook 'org-mode-hook (lambda () (line-number-mode 1)))
 
 ;;;;; Enable spell checking for editing org files.
 (add-hook 'LaTeX-mode-hook (lambda () (flyspell-mode 1)))
