@@ -145,7 +145,7 @@
 
 ;; Add hook for elisp files, the other programming languages are handled in
 ;; their own configs.
-(add-hook 'emacs-lisp-mode-hook (lambda () (line-number-mode t)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (display-line-numbers-mode t)))
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -13,7 +13,7 @@
                                   tab-width 4
                                   indent-tabs-mode t)))
 
-(add-hook 'java-mode-hook 'line-number-mode)
+(add-hook 'java-mode-hook (lambda () (display-line-numbers-mode t)))
 
 (provide 'init-java)
 ;;; init-java.el ends here

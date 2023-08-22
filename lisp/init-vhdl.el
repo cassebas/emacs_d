@@ -6,7 +6,7 @@
 (require 'vhdl-mode)
 
 ;; Turn on line numbers in vhdl-mode
-(add-hook 'vhdl-mode-hook (lambda () (line-number-mode 1)))
+(add-hook 'vhdl-mode-hook (lambda () (display-line-numbers-mode 1)))
 (add-hook 'vhdl-mode-hook (lambda () (setq indent-tabs-mode nil)))
 (add-hook 'vhdl-mode-hook (lambda () (setq vhdl-indent-tabs-mode nil)))
 

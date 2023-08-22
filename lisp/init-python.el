@@ -8,7 +8,7 @@
 (add-hook 'python-mode-hook 'pyenv-mode)
 
 ;; Show line numbers when editing python code.
-(add-hook 'python-mode-hook (lambda () (line-number-mode 1)))
+(add-hook 'python-mode-hook (lambda () (display-line-numbers-mode 1)))
 
 ;; The following function will be called upon a projectile
 ;; hook that will run when C-c p p is issued (projectile-switch-project)
