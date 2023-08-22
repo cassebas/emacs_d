@@ -4,11 +4,15 @@
 
 ;;; Code:
 
-(load "auctex.el" nil t t)
+;; Install auctex
+(use-package tex
+  :straight auctex)
+
 
 ;; These are for auctex
 (add-hook 'LaTeX-mode-hook (lambda () (setq TeX-auto-save t)))
 (add-hook 'LaTeX-mode-hook (lambda () (setq TeX-parse-self t)))
+(add-hook 'LaTeX-mode-hook (lambda () (setq-default TeX-master nil)))
 
 ;; Some basic settings
 (add-hook 'LaTeX-mode-hook (lambda () (display-line-numbers-mode t)))
