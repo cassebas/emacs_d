@@ -20,7 +20,7 @@
   ;; Global settings (default)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
 	    doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-spacegrey t)
+  (load-theme 'doom-solarized-dark-high-contrast t)
   ;; Corrects (and improves) org-modes's native fontification
   (doom-themes-org-config))
 
