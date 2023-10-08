@@ -65,6 +65,7 @@
 ;; Some specific packages, with specific configs ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(require 'init-typeface)
 (require 'init-helm)
 (require 'init-evil)
 (require 'init-c_cpp)
