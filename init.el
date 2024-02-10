@@ -43,23 +43,23 @@
   :config
   (global-flycheck-mode))
 
-;; Auto-completions.
-;; https://company-mode.github.io/
-(use-package company
-  :config
-  (global-company-mode))
+;; ;; Auto-completions.
+;; ;; https://company-mode.github.io/
+;; (use-package company
+;;   :config
+;;   (global-company-mode))
 
-;; Git
-;; https://github.com/magit/magit
-(use-package magit)
+;; ;; Git
+;; ;; https://github.com/magit/magit
+;; (use-package magit)
 
 (use-package undo-tree)
 (setq undo-tree-auto-save-history nil)
 (global-undo-tree-mode)
 
-(use-package cmake-mode
-  :ensure t
-  :mode "CMakeLists.txt")
+;; (use-package cmake-mode
+;;   :ensure t
+;;   :mode "CMakeLists.txt")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Some specific packages, with specific configs ;;
@@ -68,20 +68,20 @@
 (require 'init-typeface)
 (require 'init-helm)
 (require 'init-evil)
-(require 'init-c_cpp)
-(require 'init-haskell)
-(require 'init-python)
-(require 'init-php)
+;; (require 'init-c_cpp)
+;; (require 'init-haskell)
+;; (require 'init-python)
+;; (require 'init-php)
 (require 'init-misc)
-(require 'init-org)
-(require 'init-treemacs)
-(require 'init-latex)
-(require 'init-vhdl)
+;; (require 'init-org)
+;; (require 'init-treemacs)
+;; (require 'init-latex)
+;; (require 'init-vhdl)
 
 ;(require 'init-java)
 ;(require 'init-ess)
 ;(require 'init-magit)
-;(require 'init-mu4e)
+(require 'init-mu4e)
 ;(require 'init-projectile)
 
 
