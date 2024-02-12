@@ -24,7 +24,7 @@
 (setq smtpmail-default-smtp-server "smtp.uni-augsburg.de"
       smtpmail-smtp-server "smtp.uni-augsburg.de"
       smtpmail-stream-type 'starttls
-      smtpmail-smtp-service 465)
+      smtpmail-smtp-service 587)
 
 ;; Define mu4e context for multiple mail accounts
 (setq mu4e-contexts
@@ -43,7 +43,7 @@
                   (smtpmail-smtp-user . "treijtca")
                   ;; the list vars is already quoted so use unquoted starttls/ssl
                   (smtpmail-stream-type . starttls)
-                  (smtpmail-smtp-service . 465)
+                  (smtpmail-smtp-service . 587)
                   (mu4e-trash-folder . "/uni-augsburg/Trash")
                   (mu4e-sent-folder . "/uni-augsburg/Sent")
                   (mu4e-drafts-folder . "/uni-augsburg/Drafts")
