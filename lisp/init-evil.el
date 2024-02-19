@@ -68,7 +68,7 @@
       "b" 'helm-buffers-list
       "g" 'magit-status
       "k" 'kill-buffer
-      "s" 'helm-ag
+      "s" 'helm-ag-project-root
       "p" 'projectile-find-file
       "m" 'mu4e
       "x" 'helm-M-x)))
