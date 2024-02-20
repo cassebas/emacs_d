@@ -30,13 +30,13 @@
        (user-init-file-1
         (expand-file-name "init" user-init-dir)))
   (setq user-emacs-directory user-init-dir)
-  (with-eval-after-load "server"
-    (setq server-name
-          (let ((server--name (file-name-nondirectory
-                               (directory-file-name user-emacs-directory))))
-            (if (equal server--name ".emacs.d")
-                "server"
-              server--name))))
+  ;; (with-eval-after-load "server"
+  ;;   (setq server-name
+  ;;         (let ((server--name (file-name-nondirectory
+  ;;                              (directory-file-name user-emacs-directory))))
+  ;;           (if (equal server--name ".emacs.d")
+  ;;               "server"
+  ;;             server--name))))
   (setq user-init-file t)
   (load user-init-file-1 t t)
   (when (eq user-init-file t)
