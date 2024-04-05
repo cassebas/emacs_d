@@ -21,8 +21,8 @@
 (setq message-send-mail-function 'smtpmail-send-it)
 
 ;; Default settings for smtpmail
-(setq smtpmail-default-smtp-server "smtp.uni-augsburg.de"
-      smtpmail-smtp-server "smtp.uni-augsburg.de"
+(setq smtpmail-default-smtp-server "smtp.freedom.nl"
+      smtpmail-smtp-server "smtp.freedom.nl"
       smtpmail-stream-type 'starttls
       smtpmail-smtp-service 587)
 
@@ -30,23 +30,43 @@
 (setq mu4e-contexts
       `(
         ,(make-mu4e-context
-          :name "uni-augsburg"
-          :enter-func (lambda() (mu4e-message "Entering uni-augsburg context"))
-          :leave-func (lambda() (mu4e-message "Leaving uni-augsburg context"))
+          :name "freedommail"
+          :enter-func (lambda() (mu4e-message "Entering freedommail context"))
+          :leave-func (lambda() (mu4e-message "Leaving freedommail context"))
           :match-func (lambda(msg) (when msg
                                      (mu4e-message-contact-field-matches
-                                      msg :to "caspar.treijtel@uni-a.de")))
+                                      msg :to "c.treijtel@freedom.nl")))
           :vars '(
-                  (user-mail-address . "caspar.treijtel@uni-a.de")
+                  (user-mail-address . "c.treijtel@freedom.nl")
                   (user-full-name . "Caspar Treijtel")
-                  (smtpmail-smtp-server . "smtp.uni-augsburg.de")
-                  (smtpmail-smtp-user . "treijtca")
+                  (smtpmail-smtp-server . "smtp.freedom.nl")
+                  (smtpmail-smtp-user . "c.treijtel@freedom.nl")
                   ;; the list vars is already quoted so use unquoted starttls/ssl
                   (smtpmail-stream-type . starttls)
                   (smtpmail-smtp-service . 587)
-                  (mu4e-trash-folder . "/uni-augsburg/Trash")
-                  (mu4e-sent-folder . "/uni-augsburg/Sent")
-                  (mu4e-drafts-folder . "/uni-augsburg/Drafts")
+                  (mu4e-trash-folder . "/freedommail/Trash")
+                  (mu4e-sent-folder . "/freedommail/Sent")
+                  (mu4e-drafts-folder . "/freedommail/Drafts")
+                  )
+          )
+        ,(make-mu4e-context
+          :name "cubitocosmicomail"
+          :enter-func (lambda() (mu4e-message "Entering cubitocosmicomail context"))
+          :leave-func (lambda() (mu4e-message "Leaving cubitocosmicomail context"))
+          :match-func (lambda(msg) (when msg
+                                     (mu4e-message-contact-field-matches
+                                      msg :to "cubito@cosmico.nl")))
+          :vars '(
+                  (user-mail-address . "cubito@cosmico.nl")
+                  (user-full-name . "Caspar Treijtel")
+                  (smtpmail-smtp-server . "smtp.freedom.nl")
+                  (smtpmail-smtp-user . "cubito@cosmico.nl")
+                  ;; the list vars is already quoted so use unquoted starttls/ssl
+                  (smtpmail-stream-type . starttls)
+                  (smtpmail-smtp-service . 587)
+                  (mu4e-trash-folder . "/cubitocosmicomail/Trash")
+                  (mu4e-sent-folder . "/cubitocosmicomail/Sent")
+                  (mu4e-drafts-folder . "/cubitocosmicomail/Drafts")
                   )
           )
         )
@@ -57,14 +77,14 @@
 (setq mu4e-context-policy 'pick-first)
 
 ;; the maildirs you use frequently; access them with 'J' ('jump')
-(setq mu4e-maildir-shortcuts '(("/uni-augsburg/INBOX" . ?i)
-                               ("/uni-augsburg/Sent" . ?s)))
+(setq mu4e-maildir-shortcuts '(("/freedommail/INBOX" . ?f)
+                               ("/cubitocosmicomail/INBOX" . ?c)))
 
 ;; ; Prepend my own bookmark to the standard bookmarks list
 ;; (add-to-list 'mu4e-bookmarks
 ;;              (make-mu4e-bookmark
 ;;               :name "Inbox messages"
-;;               :query "maildir:/uni-augsburg/INBOX"
+;;               :query "maildir:/freedommail/INBOX"
 ;;               :key ?i))
 
 

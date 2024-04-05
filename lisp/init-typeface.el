@@ -9,7 +9,7 @@
 ;; Font (use add-to-list to make it appear in daemon mode)         ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (add-to-list 'default-frame-alist '(font . "Inconsolata-16"))
-(add-to-list 'default-frame-alist '(font . "JetbrainsMono-13"))
+(add-to-list 'default-frame-alist '(font . "JetbrainsMono-16"))
 
 (dolist (char/ligature-re
          `((?-  . ,(rx (or (or "-->" "-<<" "->>" "-|" "-~" "-<" "->") (+ "-"))))
