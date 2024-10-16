@@ -18,8 +18,8 @@
 ;; “user”: When you want to define your own style
 ;;;;;;;;;; set style to "k&r";;;;;;;;;;;;;
 (setq c-default-style "k&r")
-;; But use 4 spaces for indentation instead of 5
-(setq-default c-basic-offset 4)
+;; But use 2 spaces for indentation instead of 5
+(setq-default c-basic-offset 2)
 
 ;;;;; Turn on line numbers in c-mode
 (add-hook 'c-mode-hook (lambda () (display-line-numbers-mode 1)))
