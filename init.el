@@ -78,6 +78,7 @@
 (require 'init-latex)
 (require 'init-vhdl)
 (require 'init-scala)
+(require 'init-riscv)
 ;(require 'init-java)
 ;(require 'init-ess)
 ;(require 'init-magit)
