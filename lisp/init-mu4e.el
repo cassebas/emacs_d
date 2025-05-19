@@ -17,6 +17,9 @@
 ;; path to our Maildir directory
 (setq mu4e-maildir "/home/caspar/local/maildir")
 
+;; mu4e needs to know where the mu binary is
+(setq mu4e-mu-binary "/usr/bin/mu")
+
 ;; Use gnus smtpmail
 (setq message-send-mail-function 'smtpmail-send-it)
 
