@@ -77,6 +77,16 @@
 (when (fboundp 'imagemagick-register-types)
   (imagemagick-register-types))
 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; enable signing messages with OpenPGP  ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq message-openpgp-header '("22E2B8042B07C726" "sign"))
+(add-hook 'message-header-setup-hook 'message-add-openpgp-header)
+(add-hook 'message-send-hook 'mml-secure-message-sign-pgpmime)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; enable picking attachment using dired ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
