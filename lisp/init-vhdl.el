@@ -3,7 +3,30 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'vhdl-mode)
+(use-package vhdl-ext
+  :hook ((vhdl-mode . vhdl-ext-mode))
+  :init
+  ;; Can also be set through `M-x RET customize-group RET vhdl-ext':
+  ;; Comment out/remove the ones you do not need
+  (setq vhdl-ext-feature-list
+        '(font-lock
+          xref
+          capf
+          hierarchy
+          eglot
+          lsp
+          flycheck
+          beautify
+          navigation
+          template
+          compilation
+          imenu
+          which-func
+          hideshow
+          time-stamp
+          ports))
+  :config
+  (vhdl-ext-mode-setup))
 
 ;; Turn on line numbers in vhdl-mode
 (add-hook 'vhdl-mode-hook (lambda () (display-line-numbers-mode 1)))
