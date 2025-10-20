@@ -83,6 +83,7 @@
 ;; enable signing messages with OpenPGP  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq message-openpgp-header '("22E2B8042B07C726" "sign"))
+(setq mml-secure-openpgp-sign-with-sender t)
 (add-hook 'message-header-setup-hook 'message-add-openpgp-header)
 (add-hook 'message-send-hook 'mml-secure-message-sign-pgpmime)
 
