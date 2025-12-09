@@ -18,3 +18,4 @@ anaconda-mode
 /transient/
 /.lsp-session-v1
 /tramp
+eln-cache
