@@ -213,5 +213,8 @@
   (which-key-mode 1))
 
 
+(use-package vterm
+  :ensure t)
+
 (provide 'init-misc)
 ;;; init-misc.el ends here
