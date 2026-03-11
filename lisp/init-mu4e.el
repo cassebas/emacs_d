@@ -24,7 +24,7 @@
 (setq smtpmail-default-smtp-server "smtp.freedom.nl"
       smtpmail-smtp-server "smtp.freedom.nl"
       smtpmail-stream-type 'starttls
-      smtpmail-smtp-service 587)
+      smtpmail-smtp-service 465)
 
 ;; Define mu4e context for multiple mail accounts
 (setq mu4e-contexts
@@ -49,26 +49,6 @@
                   (mu4e-drafts-folder . "/freedommail/Drafts")
                   )
           )
-        ,(make-mu4e-context
-          :name "cubitocosmicomail"
-          :enter-func (lambda() (mu4e-message "Entering cubitocosmicomail context"))
-          :leave-func (lambda() (mu4e-message "Leaving cubitocosmicomail context"))
-          :match-func (lambda(msg) (when msg
-                                     (mu4e-message-contact-field-matches
-                                      msg :to "cubito@cosmico.nl")))
-          :vars '(
-                  (user-mail-address . "cubito@cosmico.nl")
-                  (user-full-name . "Caspar Treijtel")
-                  (smtpmail-smtp-server . "smtp.freedom.nl")
-                  (smtpmail-smtp-user . "cubito@cosmico.nl")
-                  ;; the list vars is already quoted so use unquoted starttls/ssl
-                  (smtpmail-stream-type . starttls)
-                  (smtpmail-smtp-service . 587)
-                  (mu4e-trash-folder . "/cubitocosmicomail/Trash")
-                  (mu4e-sent-folder . "/cubitocosmicomail/Sent")
-                  (mu4e-drafts-folder . "/cubitocosmicomail/Drafts")
-                  )
-          )
         )
       )
 
@@ -77,8 +57,8 @@
 (setq mu4e-context-policy 'pick-first)
 
 ;; the maildirs you use frequently; access them with 'J' ('jump')
-(setq mu4e-maildir-shortcuts '(("/freedommail/INBOX" . ?f)
-                               ("/cubitocosmicomail/INBOX" . ?c)))
+(setq mu4e-maildir-shortcuts '(("/freedommail/INBOX" . ?i)
+                               ("/freedommail/Sent" . ?s)))
 
 ;; ; Prepend my own bookmark to the standard bookmarks list
 ;; (add-to-list 'mu4e-bookmarks
@@ -93,6 +73,14 @@
 ;; use imagemagick, if available
 (when (fboundp 'imagemagick-register-types)
   (imagemagick-register-types))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; enable signing messages with OpenPGP  ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-hook 'message-header-setup-hook 'message-add-openpgp-header)
+(setq message-openpgp-header '("C73CF86A868169DC" "sign"))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; enable picking attachment using dired ;;
