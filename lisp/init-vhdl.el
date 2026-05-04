@@ -26,7 +26,9 @@
           time-stamp
           ports))
   :config
-  (vhdl-ext-mode-setup))
+  '((vhdl-ext-mode-setup)
+    (vhdl-ext-eglot-set-server 've-rust-hdl)
+    (vhdl-ext-lsp-set-server 've-rust-hdl)))
 
 ;; Turn on line numbers in vhdl-mode
 (add-hook 'vhdl-mode-hook (lambda () (display-line-numbers-mode 1)))
